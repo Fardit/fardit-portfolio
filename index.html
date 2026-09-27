@@ -1,145 +1,395 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fardit Ahamed - Portfolio</title>
+    <title>Fardit Ahamed | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
 
-    <!-- Header / Navbar -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-blue-600">Fardit Ahamed</a>
-            <div class="space-x-6 hidden md:flex font-medium">
-                <a href="#about" class="hover:text-blue-600 transition">About</a>
-                <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
-                <a href="#experience" class="hover:text-blue-600 transition">Experience</a>
-                <a href="#education" class="hover:text-blue-600 transition">Education</a>
-                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
-            </div>
-            <!-- Working Get In Touch Button -->
-            <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition shadow-sm">
-                Get in Touch
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-tight text-primary-600 dark:text-primary-500">
+                Fardit<span class="text-slate-800 dark:text-slate-100">.Ahamed</span>
             </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About</a>
+                <a href="#experience" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Experience</a>
+                <a href="#skills" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Skills</a>
+                <a href="#education" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Education</a>
+                <a href="#contact" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <button id="themeToggle" class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" title="Toggle Theme">
+                    <i class="fa-solid font-normal fa-moon text-lg dark:hidden"></i>
+                    <i class="fa-solid fa-sun text-lg hidden dark:block text-amber-400"></i>
+                </button>
+                <!-- Fixed Get In Touch Button to Scroll Smoothly to Contact Section -->
+                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all shadow-primary-500/20">
+                    Get in Touch
+                </a>
+            </div>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section class="max-w-6xl mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center justify-between gap-12">
-        <div class="space-y-6 md:w-2/3">
-            <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full">Application Engineer & Solution Analyst</span>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-                Hi, I'm <span class="text-blue-600">Fardit Ahamed</span>
-            </h1>
-            <p class="text-lg text-gray-600 leading-relaxed">
-                Technology and business professional with 2+ years of experience in application support, solution analysis, product operations, and banking technology. Currently supporting a SaaS-based Card Management System (CMS) serving ~36 banking clients.
-            </p>
-            <div class="flex flex-wrap gap-4 pt-2">
-                <!-- Working Contact Scroll Button -->
-                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg shadow-md transition">
-                    Contact Me
-                </a>
-                <a href="https://linkedin.com/in/farditahamed" target="_blank" class="border border-gray-300 hover:border-gray-400 font-medium px-6 py-3 rounded-lg flex items-center gap-2 transition">
-                    <i class="fab font-bold fa-linkedin text-blue-600"></i> LinkedIn
-                </a>
+    <section class="pt-32 pb-20 md:pt-40 md:pb-28 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+            <div class="flex-1 text-center md:text-left space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-950/50 border border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-300 text-xs font-semibold uppercase tracking-wider">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Available for Key Roles
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    Fardit Ahamed
+                </h1>
+                <p class="text-xl sm:text-2xl font-semibold text-primary-600 dark:text-primary-400">
+                    Application Engineer | Solution Analyst | Product & Operations
+                </p>
+                <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+                    Tech & Business professional specializing in Card Management Systems (CMS), application support, process automation, and solution analysis for top-tier banking clients.
+                </p>
+
+                <!-- Contact Badges -->
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-sm text-slate-600 dark:text-slate-400">
+                    <a href="mailto:shawkot101@gmail.com" class="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                        <i class="fa-solid fa-envelope text-primary-500"></i> shawkot101@gmail.com
+                    </a>
+                    <a href="tel:01766957937" class="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                        <i class="fa-solid fa-phone text-primary-500"></i> +880 1766 957937
+                    </a>
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-primary-500"></i> Dhaka, Bangladesh
+                    </span>
+                </div>
+
+                <!-- Action Buttons (Gamma Removed, Contact Added) -->
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+                    <a href="https://linkedin.com/in/farditahamed" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-primary-600 dark:hover:bg-primary-700 rounded-xl transition-all shadow-md">
+                        <i class="fa-brands fa-linkedin text-lg"></i> LinkedIn Profile
+                    </a>
+                    <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all shadow-sm">
+                        <i class="fa-solid fa-paper-plane text-primary-500"></i> Get In Touch
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="md:w-1/3 flex justify-center">
-            <!-- Replace profile.jpg with your uploaded image filename if different -->
-            <img src="profile.jpg" alt="Fardit Ahamed" class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-2xl border-4 border-white">
+
+            <!-- Avatar Image Updated to profile.jpg -->
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-primary-600 to-indigo-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative w-48 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl">
+                    <img src="profile.jpg" alt="Fardit Ahamed" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Fardit+Ahamed&background=0284c7&color=fff&size=256'">
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="bg-white py-16">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Core Competencies</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="p-6 bg-gray-50 rounded-xl shadow-sm border border-gray-100">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-xl font-bold mb-4">
-                        <i class="fas fa-credit-card"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2">Banking & CMS</h3>
-                    <p class="text-gray-600 text-sm">Card Management Systems (CMS), Batch operations, User access & administration.</p>
-                </div>
-                <div class="p-6 bg-gray-50 rounded-xl shadow-sm border border-gray-100">
-                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-xl font-bold mb-4">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2">Business Analysis</h3>
-                    <p class="text-gray-600 text-sm">Requirement analysis, Solution design, Process improvement, Documentation.</p>
-                </div>
-                <div class="p-6 bg-gray-50 rounded-xl shadow-sm border border-gray-100">
-                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-xl font-bold mb-4">
-                        <i class="fas fa-tasks"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2">Operations & Testing</h3>
-                    <p class="text-gray-600 text-sm">UAT & System testing, Data validation, Cross-functional coordination, Audit support.</p>
-                </div>
-                <div class="p-6 bg-gray-50 rounded-xl shadow-sm border border-gray-100">
-                    <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center text-xl font-bold mb-4">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2">Tools & Scripting</h3>
-                    <p class="text-gray-600 text-sm">Google Sheets, Google Apps Script, SQL, Operational task automation.</p>
-                </div>
+    <!-- Metrics Highlight Section -->
+    <section class="bg-white dark:bg-slate-800/50 border-y border-slate-200 dark:border-slate-800 py-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div class="p-4">
+                <p class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">36+</p>
+                <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">Banking Clients Supported</p>
             </div>
+            <div class="p-4">
+                <p class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">2+ Years</p>
+                <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">Tech & Operations Experience</p>
+            </div>
+            <div class="p-4">
+                <p class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">EMBA</p>
+                <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">University of Dhaka</p>
+            </div>
+            <div class="p-4">
+                <p class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">B.Sc.</p>
+                <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">CSE Graduate (AIUB)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center space-y-4 mb-12">
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">About Me</h2>
+            <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+        </div>
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-10 shadow-xl border border-slate-200/60 dark:border-slate-700/60">
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
+                Technology and business professional with 2+ years of experience in application support, solution analysis, product operations, and banking technology. Experienced in supporting a SaaS-based Card Management System used across approximately 36 banking clients, with hands-on responsibility for CMS administration, card and account operations, user/access management, requirements analysis, UAT/testing, data validation, documentation, audit support, and cross-functional coordination. Currently pursuing an Executive MBA at the University of Dhaka, with a career focus on business analysis, product/operations, and technology-driven business solutions.
+            </p>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-16 max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Professional Experience</h2>
-        <div class="space-y-8">
-            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
-                <div class="flex flex-col md:flex-row justify-between mb-4">
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900">Application Engineer</h3>
-                        <p class="text-blue-600 font-medium">IT Consultants PLC</p>
+    <section id="experience" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Work Experience</h2>
+                <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="relative border-l-2 border-primary-500/30 ml-4 md:ml-32 space-y-12">
+                <!-- IT Consultants PLC -->
+                <div class="relative pl-6 md:pl-10 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primary-600 ring-4 ring-white dark:ring-slate-900"></div>
+                    <div class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Application Engineer</h3>
+                                <p class="text-primary-600 dark:text-primary-400 font-semibold">IT Consultants PLC</p>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
+                                Oct 2024 – Present
+                            </span>
+                        </div>
+                        <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
+                            <li>Provide application and solution support for a SaaS-based Card Management System (CMS) serving ~36 banking clients.</li>
+                            <li>Manage CMS administration, user access provisioning, password resets, account unlocking, and role/access support.</li>
+                            <li>Perform card and account operations including batch card creation, modification, deletion, and account setup/maintenance.</li>
+                            <li>Configure operational entities (branches/stations) and coordinate batch requests with online/operations teams.</li>
+                            <li>Analyze business and operational requirements, investigate issues, and provide practical solutions to banking teams.</li>
+                            <li>Coordinate with TOS, R&D/development, database, CMS checking, and online teams for system changes and releases.</li>
+                            <li>Manage SMS, Card Mailer, and e-Statement change requests through requirement collection, tracking, and validation.</li>
+                            <li>Support UAT, testing, data validation, documentation, reporting, and process improvement activities.</li>
+                            <li>Participated in two internal audit exercises, supporting CMS-related information gathering, verification, and documentation.</li>
+                            <li>Develop internal tracking/reporting solutions and automate recurring operational activities using Google Sheets & Google Apps Script.</li>
+                        </ul>
                     </div>
-                    <span class="text-gray-500 text-sm font-medium">Oct 2024 – Present</span>
                 </div>
-                <ul class="list-disc list-inside space-y-2 text-gray-600 text-sm leading-relaxed">
-                    <li>Provide application and solution support for a SaaS-based Card Management System (CMS) serving ~36 banking clients.</li>
-                    <li>Manage user creation, access provisioning, password resets, account unlocking, and role support.</li>
-                    <li>Execute batch operations for card creation, modification, deletion, and account setup.</li>
-                    <li>Analyze business & operational requirements and coordinate with R&D, database, and online teams for releases.</li>
-                    <li>Automated recurring operational activities using Google Sheets and Google Apps Script.</li>
-                </ul>
+
+                <!-- SMANS School of English -->
+                <div class="relative pl-6 md:pl-10 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-slate-900"></div>
+                    <div class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">IELTS Trainer</h3>
+                                <p class="text-primary-600 dark:text-primary-400 font-semibold">SMANS School of English</p>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
+                                Jul 2023 – Jul 2024
+                            </span>
+                        </div>
+                        <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
+                            <li>Conducted IELTS training in Reading, Listening, Writing, and Speaking modules.</li>
+                            <li>Guided learners on question-solving strategies, English development, and examination techniques.</li>
+                            <li>Assessed performance, identified weaknesses, provided individual feedback, and prepared practice materials.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SR Dream IT -->
+                <div class="relative pl-6 md:pl-10 group">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-slate-900"></div>
+                    <div class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Online Support Specialist</h3>
+                                <p class="text-primary-600 dark:text-primary-400 font-semibold">SR Dream IT</p>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
+                                Jul 2022 – Oct 2022
+                            </span>
+                        </div>
+                        <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
+                            <li>Provided online customer and operational support through digital communication channels.</li>
+                            <li>Assisted with issue resolution, information handling, and day-to-day support activities.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Core Skills & Competencies</h2>
+            <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Skill Card 1 -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+                <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+                    <i class="fa-solid fa-credit-card"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Banking & CMS</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Card Management Systems (CMS), Batch Card Creation, Account Maintenance, Station Configuration.</p>
+            </div>
+
+            <!-- Skill Card 2 -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+                <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Analysis & Solution</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Business & Requirement Analysis, Solution Analysis, Root Cause Investigation, Technical Guidance.</p>
+            </div>
+
+            <!-- Skill Card 3 -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+                <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+                    <i class="fa-solid fa-vial"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">QA & Testing</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">User Acceptance Testing (UAT), Data Validation, Release Activities, Cross-Team Coordination.</p>
+            </div>
+
+            <!-- Skill Card 4 -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+                <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+                    <i class="fa-solid fa-gears"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Automation & Tools</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Google Sheets, Google Apps Script, SQL Database Queries, Process Automation.</p>
+            </div>
+
+            <!-- Skill Card 5 -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+                <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Operations & Admin</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">User Access Provisioning, Role Management, Audit Compliance Support, Documentation.</p>
+            </div>
+
+            <!-- Skill Card 6 -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+                <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+                    <i class="fa-solid fa-box"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Product Operations</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400">Product Lifecycle Management, Feature Requests, SMS/Card Mailer/e-Statement Change Operations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Training -->
+    <section id="education" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Education & Certifications</h2>
+                <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Education -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-primary-600"></i> Education
+                    </h3>
+                    
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-2">
+                        <span class="text-xs font-semibold text-primary-600 dark:text-primary-400">2025 – Present</span>
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">Executive MBA (EMBA)</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Organizational Strategy & Leadership</p>
+                        <p class="text-xs text-slate-500 font-medium">University of Dhaka</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-2">
+                        <span class="text-xs font-semibold text-primary-600 dark:text-primary-400">2018 – 2021</span>
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">B.Sc. in Computer Science & Engineering</h4>
+                        <p class="text-xs text-slate-500 font-medium">American International University-Bangladesh (AIUB)</p>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-certificate text-primary-600"></i> Professional Development
+                    </h3>
+
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-2">
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">Digital Product Management</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Interactive Cares</p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-2">
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">Basics of Product Management</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Ostad</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="bg-white py-16">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">Get In Touch</h2>
-            <p class="text-gray-600 mb-8">Feel free to reach out to me for professional inquiries or opportunities.</p>
-            
-            <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-200 max-w-lg mx-auto space-y-6">
-                <div class="flex items-center justify-center gap-3 text-lg font-semibold text-gray-800">
-                    <i class="fas fa-envelope text-blue-600"></i> shawkot101@gmail.com
-                </div>
-                <div class="flex items-center justify-center gap-3 text-lg font-semibold text-gray-800">
-                    <i class="fas fa-phone text-blue-600"></i> +880 1766957937
-                </div>
-                
-                <!-- Working Email Button -->
-                <a href="mailto:shawkot101@gmail.com?subject=Inquiry%20from%20Portfolio" 
-                   class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md">
-                    Send Email Direct
+    <section id="contact" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="max-w-3xl mx-auto bg-gradient-to-br from-primary-600 to-indigo-700 text-white rounded-3xl p-8 sm:p-12 shadow-2xl space-y-6">
+            <h2 class="text-3xl sm:text-4xl font-extrabold">Let's Connect & Work Together</h2>
+            <p class="text-primary-100 text-lg">
+                Open for opportunities in Application Support, Solution Analysis, and Product Operations.
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+                <!-- Working Direct Email Button -->
+                <a href="mailto:shawkot101@gmail.com?subject=Inquiry%20from%20Portfolio" class="px-6 py-3 bg-white text-primary-700 font-bold rounded-xl shadow-lg hover:bg-slate-100 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-envelope"></i> Send Email Direct
+                </a>
+                <a href="https://linkedin.com/in/farditahamed" target="_blank" class="px-6 py-3 bg-primary-800/60 text-white font-bold rounded-xl border border-white/20 hover:bg-primary-800 transition-all flex items-center gap-2">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8 text-center text-sm">
-        <p>&copy; 2026 Fardit Ahamed. All rights reserved.</p>
+    <footer class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-500">
+        <p>© <span id="year"></span> Fardit Ahamed. All rights reserved.</p>
     </footer>
 
+    <!-- Theme Toggle Script -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const themeToggleBtn = document.getElementById('themeToggle');
+        
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+    </script>
 </body>
 </html>
