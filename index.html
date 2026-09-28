@@ -36,6 +36,36 @@
             }
         }
     </script>
+
+    <style>
+        /* Metrics-only reveal animation */
+        .metric-reveal {
+            opacity: 0;
+            transform: translateY(12px) scale(0.97);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .metric-reveal.metric-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .metric-delay-1 {
+            transition-delay: 0.15s;
+        }
+
+        .metric-delay-2 {
+            transition-delay: 0.3s;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .metric-reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
@@ -181,13 +211,14 @@
 
 
     <!-- Metrics Highlight Section -->
-    <section class="bg-white dark:bg-slate-800/50 border-y border-slate-200 dark:border-slate-800 py-10">
+    <section id="metrics" class="bg-white dark:bg-slate-800/50 border-y border-slate-200 dark:border-slate-800 py-10">
 
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
 
             <div class="p-4">
-                <p class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
-                    36+
+                <p id="clientsCount"
+                    class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
+                    0+
                 </p>
 
                 <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
@@ -198,8 +229,9 @@
 
             <div class="p-4">
 
-                <p class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
-                    2+ Years
+                <p id="experienceCount"
+                    class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
+                    0+ Years
                 </p>
 
                 <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
@@ -209,7 +241,7 @@
             </div>
 
 
-            <div class="p-4">
+            <div class="p-4 metric-reveal metric-delay-1">
 
                 <p class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
                     EMBA
@@ -222,7 +254,7 @@
             </div>
 
 
-            <div class="p-4">
+            <div class="p-4 metric-reveal metric-delay-2">
 
                 <p class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
                     B.Sc.
@@ -615,7 +647,7 @@
                             2025 – Present
                         </span>
 
-                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">
+                         <h4 class="text-lg font-bold text-slate-900 dark:text-white">
                             Executive MBA (EMBA)
                         </h4>
 
@@ -637,8 +669,12 @@
                         </span>
 
                         <h4 class="text-lg font-bold text-slate-900 dark:text-white">
-                            B.Sc. in Computer Science & Engineering
+                            Bachelor of Science (B.Sc.)
                         </h4>
+
+                        <p class="text-sm text-slate-600 dark:text-slate-400">
+                            Computer Science & Engineering
+                        </p>
 
                         <p class="text-xs text-slate-500 font-medium">
                             American International University-Bangladesh (AIUB)
@@ -757,6 +793,64 @@
     <script>
 
         document.getElementById('year').textContent = new Date().getFullYear();
+
+
+        // Metrics-only animation
+        const metricsSection = document.getElementById('metrics');
+        const clientsCount = document.getElementById('clientsCount');
+        const experienceCount = document.getElementById('experienceCount');
+        const metricRevealItems = document.querySelectorAll('#metrics .metric-reveal');
+
+
+        function animateCounter(element, target, suffix, duration = 1500) {
+            const startTime = performance.now();
+
+            function update(timestamp) {
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const easedProgress = 1 - Math.pow(1 - progress, 3);
+                const currentValue = Math.floor(easedProgress * target);
+
+                element.textContent = `${currentValue}${suffix}`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    element.textContent = `${target}${suffix}`;
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+
+        function startMetricsAnimation() {
+            if (clientsCount && experienceCount) {
+                animateCounter(clientsCount, 36, '+');
+                animateCounter(experienceCount, 2, '+ Years');
+            }
+
+            metricRevealItems.forEach(item => {
+                item.classList.add('metric-visible');
+            });
+        }
+
+
+        if (metricsSection) {
+            if ('IntersectionObserver' in window) {
+                const metricsObserver = new IntersectionObserver((entries, observer) => {
+                    if (entries.some(entry => entry.isIntersecting)) {
+                        startMetricsAnimation();
+                        observer.unobserve(metricsSection);
+                    }
+                }, {
+                    threshold: 0.2
+                });
+
+                metricsObserver.observe(metricsSection);
+            } else {
+                startMetricsAnimation();
+            }
+        }
 
 
         const themeToggleBtn = document.getElementById('themeToggle');
