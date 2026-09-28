@@ -1,117 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Fardit Ahamed | Portfolio</title>
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- FontAwesome CDN -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Google Fonts: Inter -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script>
-
         tailwind.config = {
-
             darkMode: 'class',
-
             theme: {
-
                 extend: {
-
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
-
                         primary: {
-
-                            50: '#f5f3ff',
-                            100: '#ede9fe',
-                            200: '#ddd6fe',
-                            300: '#c4b5fd',
-                            400: '#a78bfa',
-                            500: '#8b5cf6',
-                            600: '#7c3aed',
-                            700: '#6d28d9',
-                            800: '#5b21b6',
-                            900: '#4c1d95',
-                            950: '#2e1065',
-
+                            50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe',
+                            300: '#c4b5fd', 400: '#a78bfa', 500: '#8b5cf6',
+                            600: '#7c3aed', 700: '#6d28d9', 800: '#5b21b6',
+                            900: '#4c1d95', 950: '#2e1065'
                         }
-
                     }
-
                 }
-
             }
-
-        };
-
+        }
     </script>
 
-
     <style>
-
-        /* =========================================================
-           METRICS ANIMATION
-        ========================================================= */
-
-        .metric-reveal {
-
-            opacity: 0;
-            transform: translateY(12px) scale(0.97);
-
-            transition:
-                opacity 0.7s ease,
-                transform 0.7s ease;
-
-        }
-
-
-        .metric-reveal.metric-visible {
-
-            opacity: 1;
-            transform: translateY(0) scale(1);
-
-        }
-
-
-        .metric-delay-1 {
-            transition-delay: 0.15s;
-        }
-
-
-        .metric-delay-2 {
-            transition-delay: 0.3s;
-        }
-
-
-
-        /* =========================================================
-           ACCENT COLOR SYSTEM
-
-           Purple = Default
-           Red
-           Blue
-        ========================================================= */
-
-
         :root {
-
             --accent-50: #f5f3ff;
             --accent-100: #ede9fe;
             --accent-200: #ddd6fe;
@@ -124,15 +42,12 @@
             --accent-900: #4c1d95;
             --accent-950: #2e1065;
 
+            --hero-line: var(--accent-500);
+            --hero-dot: var(--accent-500);
+            --hero-glow: color-mix(in srgb, var(--accent-500) 14%, transparent);
         }
 
-
-        /* =========================================================
-           RED THEME
-        ========================================================= */
-
         html[data-accent="red"] {
-
             --accent-50: #fef2f2;
             --accent-100: #fee2e2;
             --accent-200: #fecaca;
@@ -144,16 +59,9 @@
             --accent-800: #991b1b;
             --accent-900: #7f1d1d;
             --accent-950: #450a0a;
-
         }
 
-
-        /* =========================================================
-           BLUE THEME
-        ========================================================= */
-
         html[data-accent="blue"] {
-
             --accent-50: #eff6ff;
             --accent-100: #dbeafe;
             --accent-200: #bfdbfe;
@@ -165,1962 +73,814 @@
             --accent-800: #1e40af;
             --accent-900: #1e3a8a;
             --accent-950: #172554;
-
         }
 
+        .text-primary-300 { color: var(--accent-300) !important; }
+        .text-primary-400 { color: var(--accent-400) !important; }
+        .text-primary-500 { color: var(--accent-500) !important; }
+        .text-primary-600 { color: var(--accent-600) !important; }
+        .text-primary-700 { color: var(--accent-700) !important; }
 
+        .bg-primary-50 { background-color: var(--accent-50) !important; }
+        .bg-primary-100 { background-color: var(--accent-100) !important; }
+        .bg-primary-500 { background-color: var(--accent-500) !important; }
+        .bg-primary-600 { background-color: var(--accent-600) !important; }
+        .bg-primary-700 { background-color: var(--accent-700) !important; }
+        .bg-primary-800 { background-color: var(--accent-800) !important; }
+        .bg-primary-950 { background-color: var(--accent-950) !important; }
 
-        /* =========================================================
-           TAILWIND PRIMARY OVERRIDES
-        ========================================================= */
-
-        .text-primary-300 {
-            color: var(--accent-300) !important;
-        }
-
-        .text-primary-400 {
-            color: var(--accent-400) !important;
-        }
-
-        .text-primary-500 {
-            color: var(--accent-500) !important;
-        }
-
-        .text-primary-600 {
-            color: var(--accent-600) !important;
-        }
-
-        .text-primary-700 {
-            color: var(--accent-700) !important;
-        }
-
-
-        .bg-primary-50 {
-            background-color: var(--accent-50) !important;
-        }
-
-        .bg-primary-100 {
-            background-color: var(--accent-100) !important;
-        }
-
-        .bg-primary-500 {
-            background-color: var(--accent-500) !important;
-        }
-
-        .bg-primary-600 {
-            background-color: var(--accent-600) !important;
-        }
-
-        .bg-primary-700 {
-            background-color: var(--accent-700) !important;
-        }
-
-        .bg-primary-800 {
-            background-color: var(--accent-800) !important;
-        }
-
-        .bg-primary-950 {
-            background-color: var(--accent-950) !important;
-        }
-
-
-        .border-primary-200 {
-            border-color: var(--accent-200) !important;
-        }
-
-        .border-primary-500 {
-            border-color: var(--accent-500) !important;
-        }
-
-        .border-primary-800 {
-            border-color: var(--accent-800) !important;
-        }
-
+        .border-primary-200 { border-color: var(--accent-200) !important; }
+        .border-primary-500 { border-color: var(--accent-500) !important; }
+        .border-primary-800 { border-color: var(--accent-800) !important; }
 
         .from-primary-600 {
-
-            --tw-gradient-from:
-                var(--accent-600)
-                var(--tw-gradient-from-position) !important;
-
-            --tw-gradient-to:
-                rgb(255 255 255 / 0)
-                var(--tw-gradient-to-position) !important;
-
+            --tw-gradient-from: var(--accent-600) var(--tw-gradient-from-position) !important;
+            --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position) !important;
         }
 
+        .to-indigo-600 { --tw-gradient-to: var(--accent-700) var(--tw-gradient-to-position) !important; }
+        .to-indigo-700 { --tw-gradient-to: var(--accent-800) var(--tw-gradient-to-position) !important; }
 
-        .to-indigo-600 {
-
-            --tw-gradient-to:
-                var(--accent-700)
-                var(--tw-gradient-to-position) !important;
-
-        }
-
-
-        .to-indigo-700 {
-
-            --tw-gradient-to:
-                var(--accent-800)
-                var(--tw-gradient-to-position) !important;
-
-        }
-
-
-        .hover\:text-primary-400:hover {
-            color: var(--accent-400) !important;
-        }
-
-
-        .hover\:text-primary-600:hover {
-            color: var(--accent-600) !important;
-        }
-
-
-        .hover\:bg-primary-700:hover {
-            background-color: var(--accent-700) !important;
-        }
-
-
-        .hover\:bg-primary-800:hover {
-            background-color: var(--accent-800) !important;
-        }
-
+        .hover\:text-primary-400:hover { color: var(--accent-400) !important; }
+        .hover\:text-primary-600:hover { color: var(--accent-600) !important; }
+        .hover\:bg-primary-700:hover { background-color: var(--accent-700) !important; }
+        .hover\:bg-primary-800:hover { background-color: var(--accent-800) !important; }
 
         .shadow-primary-500\/20 {
-
-            --tw-shadow-color:
-                color-mix(
-                    in srgb,
-                    var(--accent-500) 20%,
-                    transparent
-                );
-
+            --tw-shadow-color: color-mix(in srgb, var(--accent-500) 20%, transparent);
         }
 
-
-
         /* =========================================================
-           ACCENT THEME BUTTON
+           HERO PORTRAIT
+           The portrait PNG is now ONLY the person.
+           All decorative elements are CSS, so the accent theme
+           can change them without changing the person's photo.
         ========================================================= */
+
+        .hero-visual {
+            position: relative;
+            width: min(100%, 520px);
+            min-height: 430px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            isolation: isolate;
+        }
+
+        .hero-portrait {
+            position: relative;
+            z-index: 3;
+            width: min(100%, 470px);
+            height: auto;
+            display: block;
+            object-fit: contain;
+            object-position: bottom center;
+            filter: drop-shadow(0 24px 28px rgba(15, 23, 42, 0.18));
+        }
+
+        /* No box, no circle, no border around the photo */
+        .hero-visual::before,
+        .hero-visual::after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Upper-left L-shaped decorative line */
+        .hero-visual::before {
+            width: 190px;
+            height: 150px;
+            left: 28px;
+            top: 34px;
+            border-left: 8px solid var(--hero-line);
+            border-top: 8px solid var(--hero-line);
+            border-radius: 22px 0 0 0;
+            opacity: 0.95;
+        }
+
+        /* Lower-right L-shaped decorative line */
+        .hero-visual::after {
+            width: 170px;
+            height: 145px;
+            right: 12px;
+            bottom: 58px;
+            border-right: 8px solid var(--hero-line);
+            border-bottom: 8px solid var(--hero-line);
+            border-radius: 0 0 22px 0;
+            opacity: 0.95;
+        }
+
+        .hero-dots {
+            position: absolute;
+            z-index: 2;
+            right: 28px;
+            top: 118px;
+            width: 58px;
+            display: grid;
+            grid-template-columns: repeat(3, 9px);
+            gap: 9px;
+            pointer-events: none;
+        }
+
+        .hero-dots span {
+            width: 9px;
+            height: 9px;
+            border-radius: 9999px;
+            background: var(--hero-dot);
+            box-shadow: 0 0 12px var(--hero-glow);
+        }
+
+        .hero-accent-mark {
+            position: absolute;
+            z-index: 1;
+            left: 14px;
+            bottom: 46px;
+            width: 70px;
+            height: 4px;
+            border-radius: 9999px;
+            background: var(--hero-line);
+            opacity: 0.55;
+        }
+
+        /* Accent-sensitive contact panel */
+        .contact-panel {
+            background: linear-gradient(
+                135deg,
+                var(--accent-700),
+                var(--accent-800)
+            );
+        }
+
+        /* Metrics-only reveal animation */
+        .metric-reveal {
+            opacity: 0;
+            transform: translateY(12px) scale(0.97);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .metric-reveal.metric-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .metric-delay-1 { transition-delay: 0.15s; }
+        .metric-delay-2 { transition-delay: 0.3s; }
 
         #accentThemeToggle {
             position: relative;
         }
 
-
         #accentThemeToggle .theme-dot {
-
             width: 7px;
             height: 7px;
-
             border-radius: 9999px;
-
             position: absolute;
-
             bottom: 5px;
             right: 5px;
-
             border: 1px solid currentColor;
-
             background-color: var(--accent-500);
-
         }
-
-
-
-        /* =========================================================
-           HERO PORTRAIT
-           
-           IMPORTANT:
-           The PNG itself is transparent.
-           There is NO circular image container.
-           There is NO circular glow.
-           There is NO clipping.
-        ========================================================= */
-
-
-        .hero-visual {
-
-            position: relative;
-
-            width: 100%;
-
-            max-width: 560px;
-
-            min-height: 430px;
-
-            display: flex;
-
-            align-items: flex-end;
-
-            justify-content: center;
-
-            isolation: isolate;
-
-        }
-
-
-        /*
-           Flat background behind the transparent PNG.
-
-           This is deliberately NOT a circle.
-           It does not clip the image.
-        */
-
-        .hero-backdrop {
-
-            position: absolute;
-
-            left: 24px;
-            right: 24px;
-
-            top: 32px;
-            bottom: 0;
-
-            border-radius: 24px;
-
-            background-color: var(--hero-backdrop);
-
-            z-index: 0;
-
-            transition:
-                background-color 0.3s ease;
-
-        }
-
-
-        /*
-           Light mode
-        */
-
-        :root {
-
-            --hero-backdrop: #eef2ff;
-
-        }
-
-
-        /*
-           Dark mode
-        */
-
-        html.dark {
-
-            --hero-backdrop: #172033;
-
-        }
-
-
-        /*
-           Purple accent
-        */
-
-        html:not([data-accent]) {
-
-            --hero-backdrop: #201b35;
-
-        }
-
-
-        /*
-           Red accent
-        */
-
-        html[data-accent="red"] {
-
-            --hero-backdrop: #2a171b;
-
-        }
-
-
-        /*
-           Blue accent
-        */
-
-        html[data-accent="blue"] {
-
-            --hero-backdrop: #17243a;
-
-        }
-
-
-        /*
-           Transparent PNG.
-
-           No:
-           - filter
-           - opacity
-           - blend mode
-           - clipping
-           - border
-           - circle
-        */
-
-        .hero-photo {
-
-            position: relative;
-
-            z-index: 2;
-
-            display: block;
-
-            width: min(100%, 520px);
-
-            height: auto;
-
-            object-fit: contain;
-
-            filter: none;
-
-            mix-blend-mode: normal;
-
-            transition:
-                transform 0.3s ease;
-
-        }
-
-
-        /*
-           Very subtle movement.
-           Does NOT modify the image.
-        */
-
-        .hero-visual:hover .hero-photo {
-
-            transform: translateY(-4px);
-
-        }
-
-
-
-        /* =========================================================
-           MOBILE HERO
-        ========================================================= */
 
         @media (max-width: 767px) {
-
             .hero-visual {
-
                 min-height: 360px;
-
-                max-width: 430px;
-
             }
 
-
-            .hero-backdrop {
-
-                left: 16px;
-                right: 16px;
-
-                top: 32px;
-
-                border-radius: 20px;
-
+            .hero-portrait {
+                width: min(100%, 410px);
             }
 
-
-            .hero-photo {
-
-                width: min(100%, 400px);
-
+            .hero-visual::before {
+                left: 4px;
+                top: 26px;
+                width: 145px;
+                height: 120px;
             }
 
+            .hero-visual::after {
+                right: 0;
+                bottom: 45px;
+                width: 135px;
+                height: 115px;
+            }
+
+            .hero-dots {
+                right: 12px;
+                top: 96px;
+            }
+
+            .hero-accent-mark {
+                left: 2px;
+                bottom: 34px;
+            }
         }
-
-
-
-        /* =========================================================
-           REDUCED MOTION
-        ========================================================= */
 
         @media (prefers-reduced-motion: reduce) {
-
             .metric-reveal {
-
                 opacity: 1;
-
                 transform: none;
-
                 transition: none;
-
             }
-
-
-            .hero-photo {
-
-                transition: none;
-
-            }
-
-
-            .hero-visual:hover .hero-photo {
-
-                transform: none;
-
-            }
-
         }
-
     </style>
-
 </head>
 
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
 
-<body
-    class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
+<!-- Header Navigation -->
+<header class="fixed top-0 left-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
+        <a href="#" class="text-xl font-bold tracking-tight text-primary-600 dark:text-primary-500">
+            Fardit<span class="text-slate-800 dark:text-slate-100">.Ahamed</span>
+        </a>
 
-    <!-- =========================================================
-         HEADER NAVIGATION
-    ========================================================= -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+            <a href="#about" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About</a>
+            <a href="#experience" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Experience</a>
+            <a href="#skills" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Skills</a>
+            <a href="#education" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Education</a>
+            <a href="#contact" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+        </nav>
 
-    <header
-        class="fixed top-0 left-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 z-50">
+        <div class="flex items-center space-x-2">
 
-        <div
-            class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <button id="themeToggle"
+                class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+                title="Toggle Light/Dark Mode"
+                aria-label="Toggle Light/Dark Mode">
+                <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+                <i class="fa-solid fa-sun text-lg hidden dark:block text-amber-400"></i>
+            </button>
 
+            <button id="accentThemeToggle"
+                class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative"
+                title="Change Accent Color"
+                aria-label="Change Accent Color">
+                <i class="fa-solid fa-palette text-lg"></i>
+                <span class="theme-dot"></span>
+            </button>
 
-            <a href="#"
-                class="text-xl font-bold tracking-tight text-primary-600 dark:text-primary-500">
-
-                Fardit<span
-                    class="text-slate-800 dark:text-slate-100">.Ahamed</span>
-
+            <a href="#contact"
+                class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all shadow-primary-500/20">
+                Get in Touch
             </a>
-
-
-            <nav
-                class="hidden md:flex items-center space-x-8 text-sm font-medium">
-
-                <a href="#about"
-                    class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                    About
-                </a>
-
-                <a href="#experience"
-                    class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                    Experience
-                </a>
-
-                <a href="#skills"
-                    class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                    Skills
-                </a>
-
-                <a href="#education"
-                    class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                    Education
-                </a>
-
-                <a href="#contact"
-                    class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                    Contact
-                </a>
-
-            </nav>
-
-
-            <div class="flex items-center space-x-2">
-
-
-                <!-- Light / Dark Mode -->
-
-                <button id="themeToggle"
-                    class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
-                    title="Toggle Light/Dark Mode"
-                    aria-label="Toggle Light/Dark Mode">
-
-                    <i class="fa-solid fa-moon text-lg dark:hidden"></i>
-
-                    <i
-                        class="fa-solid fa-sun text-lg hidden dark:block text-amber-400"></i>
-
-                </button>
-
-
-
-                <!-- Accent Theme -->
-
-                <button id="accentThemeToggle"
-                    class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative"
-                    title="Change Accent Color"
-                    aria-label="Change Accent Color">
-
-                    <i class="fa-solid fa-palette text-lg"></i>
-
-                    <span class="theme-dot"></span>
-
-                </button>
-
-
-
-                <!-- Get In Touch -->
-
-                <a href="#contact"
-                    class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all shadow-primary-500/20">
-
-                    Get in Touch
-
-                </a>
-
-            </div>
-
         </div>
-
-    </header>
-
-
-
-    <!-- =========================================================
-         HERO SECTION
-    ========================================================= -->
-
-    <section
-        class="pt-32 pb-20 md:pt-40 md:pb-28 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    </div>
+</header>
 
 
-        <div
-            class="flex flex-col md:flex-row items-center justify-between gap-12">
+<!-- Hero Section -->
+<section class="pt-32 pb-20 md:pt-40 md:pb-28 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
+    <div class="flex flex-col md:flex-row items-center justify-between gap-12">
 
-            <!-- HERO TEXT -->
+        <div class="flex-1 text-center md:text-left space-y-6">
 
-            <div
-                class="flex-1 text-center md:text-left space-y-6">
-
-
-                <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-950/50 border border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-300 text-xs font-semibold uppercase tracking-wider">
-
-                    <span
-                        class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-
-                    Available for Key Roles
-
-                </div>
-
-
-                <h1
-                    class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-
-                    Fardit Ahamed
-
-                </h1>
-
-
-                <p
-                    class="text-xl sm:text-2xl font-semibold text-primary-600 dark:text-primary-400">
-
-                    Application Engineer | Solution Analyst | Product & Operations
-
-                </p>
-
-
-                <p
-                    class="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
-
-                    Tech & Business professional specializing in Card Management Systems (CMS), application support, process automation, and solution analysis for top-tier banking clients.
-
-                </p>
-
-
-
-                <!-- Contact Badges -->
-
-                <div
-                    class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-sm text-slate-600 dark:text-slate-400">
-
-
-                    <a href="mailto:shawkot101@gmail.com"
-                        class="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-
-                        <i
-                            class="fa-solid fa-envelope text-primary-500"></i>
-
-                        shawkot101@gmail.com
-
-                    </a>
-
-
-                    <a href="tel:01766957937"
-                        class="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-
-                        <i
-                            class="fa-solid fa-phone text-primary-500"></i>
-
-                        +880 1766 957937
-
-                    </a>
-
-
-                    <span class="flex items-center gap-2">
-
-                        <i
-                            class="fa-solid fa-location-dot text-primary-500"></i>
-
-                        Dhaka, Bangladesh
-
-                    </span>
-
-                </div>
-
-
-
-                <!-- Action Buttons -->
-
-                <div
-                    class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
-
-
-                    <a href="https://linkedin.com/in/farditahamed"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-primary-600 dark:hover:bg-primary-700 rounded-xl transition-all shadow-md">
-
-                        <i
-                            class="fa-brands fa-linkedin text-lg"></i>
-
-                        LinkedIn Profile
-
-                    </a>
-
-
-                    <a href="#contact"
-                        class="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all shadow-sm">
-
-                        <i
-                            class="fa-solid fa-paper-plane text-primary-500"></i>
-
-                        Get In Touch
-
-                    </a>
-
-                </div>
-
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-950/50 border border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-300 text-xs font-semibold uppercase tracking-wider">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Available for Key Roles
             </div>
 
-
-
-            <!-- =====================================================
-                 TRANSPARENT PORTRAIT
-                 
-                 IMPORTANT:
-                 NO CIRCLE
-                 NO IMAGE CONTAINER
-                 NO CLIPPING
-                 NO BORDER
-                 NO GLOW
-            ====================================================== -->
-
-            <div class="hero-visual">
-
-                <!-- Flat theme-dependent background -->
-
-                <div class="hero-backdrop"></div>
-
-
-                <!-- Your transparent PNG -->
-
-                <img
-                    src="Fardit Ahamed.png"
-                    alt="Fardit Ahamed"
-                    class="hero-photo"
-                    onerror="this.src='https://ui-avatars.com/api/?name=Fardit+Ahamed&background=0284c7&color=fff&size=512'">
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================================
-         METRICS
-    ========================================================= -->
-
-    <section id="metrics"
-        class="bg-white dark:bg-slate-800/50 border-y border-slate-200 dark:border-slate-800 py-10">
-
-
-        <div
-            class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-
-
-            <div class="p-4">
-
-                <p id="clientsCount"
-                    class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
-
-                    0+
-
-                </p>
-
-                <p
-                    class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
-
-                    Banking Clients Supported
-
-                </p>
-
-            </div>
-
-
-            <div class="p-4">
-
-                <p id="experienceCount"
-                    class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
-
-                    0+ Years
-
-                </p>
-
-                <p
-                    class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
-
-                    Tech & Operations Experience
-
-                </p>
-
-            </div>
-
-
-            <div class="p-4 metric-reveal metric-delay-1">
-
-                <p
-                    class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
-
-                    EMBA OSL
-
-                </p>
-
-                <p
-                    class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
-
-                    University of Dhaka
-
-                </p>
-
-            </div>
-
-
-            <div class="p-4 metric-reveal metric-delay-2">
-
-                <p
-                    class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
-
-                    B.Sc. CSE
-
-                </p>
-
-                <p
-                    class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
-
-                    American International University-Bangladesh
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================================
-         ABOUT
-    ========================================================= -->
-
-    <section id="about"
-        class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-
-        <div
-            class="max-w-3xl mx-auto text-center space-y-4 mb-12">
-
-            <h2
-                class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-
-                About Me
-
-            </h2>
-
-            <div
-                class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
-
-        </div>
-
-
-        <div
-            class="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-10 shadow-xl border border-slate-200/60 dark:border-slate-700/60">
-
-
-            <p
-                class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-
-                Technology and business professional with 2+ years of experience in application support, solution analysis, product operations, and banking technology. Experienced in supporting a SaaS-based Card Management System used across approximately 36 banking clients, with hands-on responsibility for CMS administration, card and account operations, user/access management, requirements analysis, UAT/testing, data validation, documentation, audit support, and cross-functional coordination. Currently pursuing an Executive MBA at the University of Dhaka, with a career focus on business analysis, product/operations, and technology-driven business solutions.
-
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                Fardit Ahamed
+            </h1>
+
+            <p class="text-xl sm:text-2xl font-semibold text-primary-600 dark:text-primary-400">
+                Application Engineer | Solution Analyst | Product & Operations
             </p>
 
-        </div>
-
-
-        <div class="flex justify-center mt-8">
-
-            <a href="Fardit_Ahamed_CV.pdf"
-                download="Fardit-Ahamed-CV.pdf"
-                class="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-xl shadow-md hover:shadow-lg transition-all">
-
-                <i class="fa-solid fa-download"></i>
-
-                Download CV
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================================
-         EXPERIENCE
-    ========================================================= -->
-
-    <section id="experience"
-        class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
-
-
-        <div
-            class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-
-            <div
-                class="max-w-3xl mx-auto text-center space-y-4 mb-16">
-
-                <h2
-                    class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-
-                    Work Experience
-
-                </h2>
-
-                <div
-                    class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
-
-            </div>
-
-
-            <div
-                class="relative border-l-2 border-primary-500/30 ml-4 md:ml-32 space-y-12">
-
-
-                <!-- IT Consultants PLC -->
-
-                <div
-                    class="relative pl-6 md:pl-10 group">
-
-
-                    <div
-                        class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primary-600 ring-4 ring-white dark:ring-slate-900"></div>
-
-
-                    <div
-                        class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
-
-
-                        <div
-                            class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-
-
-                            <div>
-
-                                <h3
-                                    class="text-xl font-bold text-slate-900 dark:text-white">
-
-                                    Application Engineer
-
-                                </h3>
-
-                                <p
-                                    class="text-primary-600 dark:text-primary-400 font-semibold">
-
-                                    IT Consultants PLC
-
-                                </p>
-
-                            </div>
-
-
-                            <span
-                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
-
-                                Oct 2024 – Present
-
-                            </span>
-
-                        </div>
-
-
-                        <ul
-                            class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
-
-
-                            <li>
-                                Provide application and solution support for a SaaS-based Card Management System (CMS) serving ~36 banking clients.
-                            </li>
-
-                            <li>
-                                Manage CMS administration, user access provisioning, password resets, account unlocking, and role/access support.
-                            </li>
-
-                            <li>
-                                Perform card and account operations including batch card creation, modification, deletion, and account setup/maintenance.
-                            </li>
-
-                            <li>
-                                Configure operational entities (branches/stations) and coordinate batch requests with online/operations teams.
-                            </li>
-
-                            <li>
-                                Analyze business and operational requirements, investigate issues, and provide practical solutions to banking teams.
-                            </li>
-
-                            <li>
-                                Coordinate with TOS, R&D/development, database, CMS checking, and online teams for system changes and releases.
-                            </li>
-
-                            <li>
-                                Manage SMS, Card Mailer, and e-Statement change requests through requirement collection, tracking, and validation.
-                            </li>
-
-                            <li>
-                                Support UAT, testing, data validation, documentation, reporting, and process improvement activities.
-                            </li>
-
-                            <li>
-                                Participated in two internal audit exercises, supporting CMS-related information gathering, verification, and documentation.
-                            </li>
-
-                            <li>
-                                Develop internal tracking/reporting solutions and automate recurring operational activities using Google Sheets & Google Apps Script.
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- SMANS -->
-
-                <div
-                    class="relative pl-6 md:pl-10 group">
-
-
-                    <div
-                        class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-slate-900"></div>
-
-
-                    <div
-                        class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
-
-
-                        <div
-                            class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-
-
-                            <div>
-
-                                <h3
-                                    class="text-xl font-bold text-slate-900 dark:text-white">
-
-                                    IELTS Trainer
-
-                                </h3>
-
-                                <p
-                                    class="text-primary-600 dark:text-primary-400 font-semibold">
-
-                                    SMANS School of English
-
-                                </p>
-
-                            </div>
-
-
-                            <span
-                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
-
-                                Jul 2023 – Jul 2024
-
-                            </span>
-
-                        </div>
-
-
-                        <ul
-                            class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
-
-
-                            <li>
-                                Conducted IELTS training in Reading, Listening, Writing, and Speaking modules.
-                            </li>
-
-                            <li>
-                                Guided learners on question-solving strategies, English development, and examination techniques.
-                            </li>
-
-                            <li>
-                                Assessed performance, identified weaknesses, provided individual feedback, and prepared practice materials.
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- SR Dream IT -->
-
-                <div
-                    class="relative pl-6 md:pl-10 group">
-
-
-                    <div
-                        class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-slate-900"></div>
-
-
-                    <div
-                        class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
-
-
-                        <div
-                            class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-
-
-                            <div>
-
-                                <h3
-                                    class="text-xl font-bold text-slate-900 dark:text-white">
-
-                                    Online Support Specialist
-
-                                </h3>
-
-                                <p
-                                    class="text-primary-600 dark:text-primary-400 font-semibold">
-
-                                    SR Dream IT
-
-                                </p>
-
-                            </div>
-
-
-                            <span
-                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
-
-                                Jul 2022 – Oct 2022
-
-                            </span>
-
-                        </div>
-
-
-                        <ul
-                            class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
-
-
-                            <li>
-                                Provided online customer and operational support through digital communication channels.
-                            </li>
-
-                            <li>
-                                Assisted with issue resolution, information handling, and day-to-day support activities.
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================================
-         SKILLS
-    ========================================================= -->
-
-    <section id="skills"
-        class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-
-        <div
-            class="max-w-3xl mx-auto text-center space-y-4 mb-16">
-
-            <h2
-                class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-
-                Core Skills & Competencies
-
-            </h2>
-
-            <div
-                class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
-
-        </div>
-
-
-        <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-
-            <!-- Skill 1 -->
-
-            <div
-                class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
-
-                <div
-                    class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
-
-                    <i class="fa-solid fa-credit-card"></i>
-
-                </div>
-
-                <h3
-                    class="text-lg font-bold text-slate-900 dark:text-white mb-2">
-
-                    Banking & CMS
-
-                </h3>
-
-                <p
-                    class="text-sm text-slate-600 dark:text-slate-400">
-
-                    Card Management Systems (CMS), Batch Card Creation, Account Maintenance, Station Configuration.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- Skill 2 -->
-
-            <div
-                class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
-
-                <div
-                    class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
-
-                    <i class="fa-solid fa-chart-line"></i>
-
-                </div>
-
-                <h3
-                    class="text-lg font-bold text-slate-900 dark:text-white mb-2">
-
-                    Analysis & Solution
-
-                </h3>
-
-                <p
-                    class="text-sm text-slate-600 dark:text-slate-400">
-
-                    Business & Requirement Analysis, Solution Analysis, Root Cause Investigation, Technical Guidance.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- Skill 3 -->
-
-            <div
-                class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
-
-                <div
-                    class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
-
-                    <i class="fa-solid fa-vial"></i>
-
-                </div>
-
-                <h3
-                    class="text-lg font-bold text-slate-900 dark:text-white mb-2">
-
-                    QA & Testing
-
-                </h3>
-
-                <p
-                    class="text-sm text-slate-600 dark:text-slate-400">
-
-                    User Acceptance Testing (UAT), Data Validation, Release Activities, Cross-Team Coordination.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- Skill 4 -->
-
-            <div
-                class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
-
-                <div
-                    class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
-
-                    <i class="fa-solid fa-gears"></i>
-
-                </div>
-
-                <h3
-                    class="text-lg font-bold text-slate-900 dark:text-white mb-2">
-
-                    Automation & Tools
-
-                </h3>
-
-                <p
-                    class="text-sm text-slate-600 dark:text-slate-400">
-
-                    Google Sheets, Google Apps Script, SQL Database Queries, Process Automation.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- Skill 5 -->
-
-            <div
-                class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
-
-                <div
-                    class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
-
-                    <i class="fa-solid fa-user-shield"></i>
-
-                </div>
-
-                <h3
-                    class="text-lg font-bold text-slate-900 dark:text-white mb-2">
-
-                    Operations & Admin
-
-                </h3>
-
-                <p
-                    class="text-sm text-slate-600 dark:text-slate-400">
-
-                    User Access Provisioning, Role Management, Audit Compliance Support, Documentation.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- Skill 6 -->
-
-            <div
-                class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
-
-                <div
-                    class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
-
-                    <i class="fa-solid fa-box"></i>
-
-                </div>
-
-                <h3
-                    class="text-lg font-bold text-slate-900 dark:text-white mb-2">
-
-                    Product Operations
-
-                </h3>
-
-                <p
-                    class="text-sm text-slate-600 dark:text-slate-400">
-
-                    Product Lifecycle Management, Feature Requests, SMS/Card Mailer/e-Statement Change Operations.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================================
-         EDUCATION
-    ========================================================= -->
-
-    <section id="education"
-        class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
-
-
-        <div
-            class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-
-            <div
-                class="max-w-3xl mx-auto text-center space-y-4 mb-16">
-
-                <h2
-                    class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-
-                    Education & Certifications
-
-                </h2>
-
-                <div
-                    class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
-
-            </div>
-
-
-            <div
-                class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-
-                <!-- Education -->
-
-                <div class="space-y-6">
-
-                    <h3
-                        class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-
-                        <i
-                            class="fa-solid fa-graduation-cap text-primary-600"></i>
-
-                        Education
-
-                    </h3>
-
-
-                    <div
-                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-2">
-
-                        <span
-                            class="text-xs font-semibold text-primary-600 dark:text-primary-400">
-
-                            2025 – Present
-
-                        </span>
-
-                        <h4
-                            class="text-lg font-bold text-slate-900 dark:text-white">
-
-                            Executive MBA
-
-                        </h4>
-
-                        <p
-                            class="text-sm text-slate-600 dark:text-slate-400">
-
-                            Organizational Strategy & Leadership
-
-                        </p>
-
-                        <p
-                            class="text-xs text-slate-500 font-medium">
-
-                            University of Dhaka
-
-                        </p>
-
-                    </div>
-
-
-                    <div
-                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-2">
-
-                        <span
-                            class="text-xs font-semibold text-primary-600 dark:text-primary-400">
-
-                            2018 – 2021
-
-                        </span>
-
-                        <h4
-                            class="text-lg font-bold text-slate-900 dark:text-white">
-
-                            Bachelor of Science
-
-                        </h4>
-
-                        <p
-                            class="text-sm text-slate-600 dark:text-slate-400">
-
-                            Computer Science & Engineering
-
-                        </p>
-
-                        <p
-                            class="text-xs text-slate-500 font-medium">
-
-                            American International University-Bangladesh
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- Professional Development -->
-
-                <div class="space-y-6">
-
-                    <h3
-                        class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-
-                        <i
-                            class="fa-solid fa-certificate text-primary-600"></i>
-
-                        Professional Development
-
-                    </h3>
-
-
-                    <div
-                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-4">
-
-                        <div>
-
-                            <h4
-                                class="text-lg font-bold text-slate-900 dark:text-white">
-
-                                Digital Product Management
-
-                            </h4>
-
-                            <p
-                                class="text-sm text-slate-600 dark:text-slate-400 mt-1">
-
-                                Interactive Cares
-
-                            </p>
-
-                        </div>
-
-
-                        <a href="digital-product-management.jpg"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="inline-flex items-center gap-2 w-fit px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all">
-
-                            <i class="fa-solid fa-certificate"></i>
-
-                            View Certificate
-
-                            <i
-                                class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-
-                        </a>
-
-                    </div>
-
-
-                    <div
-                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-4">
-
-                        <div>
-
-                            <h4
-                                class="text-lg font-bold text-slate-900 dark:text-white">
-
-                                Basics of Product Management
-
-                            </h4>
-
-                            <p
-                                class="text-sm text-slate-600 dark:text-slate-400 mt-1">
-
-                                Ostad
-
-                            </p>
-
-                        </div>
-
-
-                        <a href="basics-of-product-management.jpg"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="inline-flex items-center gap-2 w-fit px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all">
-
-                            <i class="fa-solid fa-certificate"></i>
-
-                            View Certificate
-
-                            <i
-                                class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================================
-         CONTACT
-    ========================================================= -->
-
-    <section id="contact"
-        class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
-
-        <div
-            class="max-w-6xl mx-auto bg-gradient-to-br from-primary-600 to-indigo-700 text-white rounded-3xl p-8 sm:p-12 shadow-2xl space-y-6">
-
-
-            <h2
-                class="text-3xl sm:text-4xl font-extrabold">
-
-                Let's Connect & Work Together
-
-            </h2>
-
-
-            <p
-                class="text-primary-100 text-lg">
-
-                Open for opportunities in Application Support, Solution Analysis, and Product Operations.
-
+            <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+                Tech & Business professional specializing in Card Management Systems (CMS), application support, process automation, and solution analysis for top-tier banking clients.
             </p>
 
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-sm text-slate-600 dark:text-slate-400">
 
-            <div
-                class="flex flex-wrap items-center justify-center gap-4 pt-4">
-
-
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shawkot101@gmail.com&su=Inquiry%20from%20Portfolio"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="px-6 py-3 bg-white text-primary-700 font-bold rounded-xl shadow-lg hover:bg-slate-100 transition-all flex items-center gap-2">
-
-                    <i class="fa-solid fa-envelope"></i>
-
-                    Send Email Direct
-
+                <a href="mailto:shawkot101@gmail.com"
+                    class="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    <i class="fa-solid fa-envelope text-primary-500"></i>
+                    shawkot101@gmail.com
                 </a>
 
+                <a href="tel:01766957937"
+                    class="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    <i class="fa-solid fa-phone text-primary-500"></i>
+                    +880 1766 957937
+                </a>
+
+                <span class="flex items-center gap-2">
+                    <i class="fa-solid fa-location-dot text-primary-500"></i>
+                    Dhaka, Bangladesh
+                </span>
+
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
 
                 <a href="https://linkedin.com/in/farditahamed"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="px-6 py-3 bg-primary-800/60 text-white font-bold rounded-xl border border-white/20 hover:bg-primary-800 transition-all flex items-center gap-2">
-
-                    <i class="fa-brands fa-linkedin"></i>
-
+                    class="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-primary-600 dark:hover:bg-primary-700 rounded-xl transition-all shadow-md">
+                    <i class="fa-brands fa-linkedin text-lg"></i>
                     LinkedIn Profile
+                </a>
 
+                <a href="#contact"
+                    class="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all shadow-sm">
+                    <i class="fa-solid fa-paper-plane text-primary-500"></i>
+                    Get In Touch
                 </a>
 
             </div>
+        </div>
+
+
+        <!-- Transparent portrait: NO container, NO circle -->
+        <div class="hero-visual" aria-label="Fardit Ahamed portrait">
+
+            <span class="hero-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </span>
+
+            <span class="hero-accent-mark" aria-hidden="true"></span>
+
+            <img src="Fardit_Ahamed_Portrait_Clean.png"
+                alt="Fardit Ahamed"
+                class="hero-portrait"
+                onerror="this.src='https://ui-avatars.com/api/?name=Fardit+Ahamed&background=0284c7&color=fff&size=512'">
 
         </div>
 
-    </section>
+    </div>
+</section>
 
 
+<!-- Metrics Highlight Section -->
+<section id="metrics" class="bg-white dark:bg-slate-800/50 border-y border-slate-200 dark:border-slate-800 py-10">
 
-    <!-- =========================================================
-         FOOTER
-    ========================================================= -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
 
-    <footer
-        class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-500">
+        <div class="p-4">
+            <p id="clientsCount" class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">0+</p>
+            <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">Banking Clients Supported</p>
+        </div>
 
-        <p>
+        <div class="p-4">
+            <p id="experienceCount" class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">0+ Years</p>
+            <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">Tech & Operations Experience</p>
+        </div>
 
-            © <span id="year"></span> Fardit Ahamed. All rights reserved.
+        <div class="p-4 metric-reveal metric-delay-1">
+            <p class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">EMBA OSL</p>
+            <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">University of Dhaka</p>
+        </div>
 
+        <div class="p-4 metric-reveal metric-delay-2">
+            <p class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">B.Sc. CSE</p>
+            <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">American International University-Bangladesh</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- About Section -->
+<section id="about" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="max-w-3xl mx-auto text-center space-y-4 mb-12">
+        <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">About Me</h2>
+        <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-10 shadow-xl border border-slate-200/60 dark:border-slate-700/60">
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
+            Technology and business professional with 2+ years of experience in application support, solution analysis, product operations, and banking technology. Experienced in supporting a SaaS-based Card Management System used across approximately 36 banking clients, with hands-on responsibility for CMS administration, card and account operations, user/access management, requirements analysis, UAT/testing, data validation, documentation, audit support, and cross-functional coordination. Currently pursuing an Executive MBA at the University of Dhaka, with a career focus on business analysis, product/operations, and technology-driven business solutions.
+        </p>
+    </div>
+
+    <div class="flex justify-center mt-8">
+        <a href="Fardit_Ahamed_CV.pdf"
+            download="Fardit-Ahamed-CV.pdf"
+            class="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-xl shadow-md hover:shadow-lg transition-all">
+            <i class="fa-solid fa-download"></i>
+            Download CV
+        </a>
+    </div>
+</section>
+
+
+<!-- Experience Section -->
+<section id="experience" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Work Experience</h2>
+            <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="relative border-l-2 border-primary-500/30 ml-4 md:ml-32 space-y-12">
+
+            <div class="relative pl-6 md:pl-10 group">
+                <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primary-600 ring-4 ring-white dark:ring-slate-900"></div>
+
+                <div class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Application Engineer</h3>
+                            <p class="text-primary-600 dark:text-primary-400 font-semibold">IT Consultants PLC</p>
+                        </div>
+
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
+                            Oct 2024 – Present
+                        </span>
+                    </div>
+
+                    <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
+                        <li>Provide application and solution support for a SaaS-based Card Management System (CMS) serving ~36 banking clients.</li>
+                        <li>Manage CMS administration, user access provisioning, password resets, account unlocking, and role/access support.</li>
+                        <li>Perform card and account operations including batch card creation, modification, deletion, and account setup/maintenance.</li>
+                        <li>Configure operational entities (branches/stations) and coordinate batch requests with online/operations teams.</li>
+                        <li>Analyze business and operational requirements, investigate issues, and provide practical solutions to banking teams.</li>
+                        <li>Coordinate with TOS, R&D/development, database, CMS checking, and online teams for system changes and releases.</li>
+                        <li>Manage SMS, Card Mailer, and e-Statement change requests through requirement collection, tracking, and validation.</li>
+                        <li>Support UAT, testing, data validation, documentation, reporting, and process improvement activities.</li>
+                        <li>Participated in two internal audit exercises, supporting CMS-related information gathering, verification, and documentation.</li>
+                        <li>Develop internal tracking/reporting solutions and automate recurring operational activities using Google Sheets & Google Apps Script.</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="relative pl-6 md:pl-10 group">
+                <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-slate-900"></div>
+
+                <div class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">IELTS Trainer</h3>
+                            <p class="text-primary-600 dark:text-primary-400 font-semibold">SMANS School of English</p>
+                        </div>
+
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
+                            Jul 2023 – Jul 2024
+                        </span>
+                    </div>
+
+                    <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
+                        <li>Conducted IELTS training in Reading, Listening, Writing, and Speaking modules.</li>
+                        <li>Guided learners on question-solving strategies, English development, and examination techniques.</li>
+                        <li>Assessed performance, identified weaknesses, provided individual feedback, and prepared practice materials.</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="relative pl-6 md:pl-10 group">
+                <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-slate-900"></div>
+
+                <div class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Online Support Specialist</h3>
+                            <p class="text-primary-600 dark:text-primary-400 font-semibold">SR Dream IT</p>
+                        </div>
+
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
+                            Jul 2022 – Oct 2022
+                        </span>
+                    </div>
+
+                    <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
+                        <li>Provided online customer and operational support through digital communication channels.</li>
+                        <li>Assisted with issue resolution, information handling, and day-to-day support activities.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Skills Section -->
+<section id="skills" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+        <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Core Skills & Competencies</h2>
+        <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+                <i class="fa-solid fa-credit-card"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Banking & CMS</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Card Management Systems (CMS), Batch Card Creation, Account Maintenance, Station Configuration.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Analysis & Solution</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Business & Requirement Analysis, Solution Analysis, Root Cause Investigation, Technical Guidance.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+                <i class="fa-solid fa-vial"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">QA & Testing</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">User Acceptance Testing (UAT), Data Validation, Release Activities, Cross-Team Coordination.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+                <i class="fa-solid fa-gears"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Automation & Tools</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Google Sheets, Google Apps Script, SQL Database Queries, Process Automation.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+                <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Operations & Admin</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">User Access Provisioning, Role Management, Audit Compliance Support, Documentation.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+                <i class="fa-solid fa-box"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Product Operations</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400">Product Lifecycle Management, Feature Requests, SMS/Card Mailer/e-Statement Change Operations.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Education & Training -->
+<section id="education" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Education & Certifications</h2>
+            <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <div class="space-y-6">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-graduation-cap text-primary-600"></i>
+                    Education
+                </h3>
+
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-2">
+                    <span class="text-xs font-semibold text-primary-600 dark:text-primary-400">2025 – Present</span>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">Executive MBA</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Organizational Strategy & Leadership</p>
+                    <p class="text-xs text-slate-500 font-medium">University of Dhaka</p>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-2">
+                    <span class="text-xs font-semibold text-primary-600 dark:text-primary-400">2018 – 2021</span>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">Bachelor of Science</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Computer Science & Engineering</p>
+                    <p class="text-xs text-slate-500 font-medium">American International University-Bangladesh</p>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-certificate text-primary-600"></i>
+                    Professional Development
+                </h3>
+
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-4">
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">Digital Product Management</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Interactive Cares</p>
+                    </div>
+
+                    <a href="digital-product-management.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 w-fit px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all">
+                        <i class="fa-solid fa-certificate"></i>
+                        View Certificate
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-4">
+                    <div>
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">Basics of Product Management</h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Ostad</p>
+                    </div>
+
+                    <a href="basics-of-product-management.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 w-fit px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all">
+                        <i class="fa-solid fa-certificate"></i>
+                        View Certificate
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+    <div class="max-w-6xl mx-auto contact-panel text-white rounded-3xl p-8 sm:p-12 shadow-2xl space-y-6">
+
+        <h2 class="text-3xl sm:text-4xl font-extrabold">
+            Let's Connect & Work Together
+        </h2>
+
+        <p class="text-primary-100 text-lg">
+            Open for opportunities in Application Support, Solution Analysis, and Product Operations.
         </p>
 
-    </footer>
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shawkot101@gmail.com&su=Inquiry%20from%20Portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-6 py-3 bg-white text-primary-700 font-bold rounded-xl shadow-lg hover:bg-slate-100 transition-all flex items-center gap-2">
+                <i class="fa-solid fa-envelope"></i>
+                Send Email Direct
+            </a>
+
+            <a href="https://linkedin.com/in/farditahamed"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-6 py-3 bg-primary-800/60 text-white font-bold rounded-xl border border-white/20 hover:bg-primary-800 transition-all flex items-center gap-2">
+                <i class="fa-brands fa-linkedin"></i>
+                LinkedIn Profile
+            </a>
+
+        </div>
+    </div>
+</section>
 
 
-
-    <!-- =========================================================
-         JAVASCRIPT
-    ========================================================= -->
-
-    <script>
+<!-- Footer -->
+<footer class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-500">
+    <p>© <span id="year"></span> Fardit Ahamed. All rights reserved.</p>
+</footer>
 
 
-        /* =========================================================
-           CURRENT YEAR
-        ========================================================= */
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-        document.getElementById('year').textContent =
-            new Date().getFullYear();
+    /* =========================================================
+       Metrics animation
+    ========================================================= */
 
+    const metricsSection = document.getElementById('metrics');
+    const clientsCount = document.getElementById('clientsCount');
+    const experienceCount = document.getElementById('experienceCount');
+    const metricRevealItems = document.querySelectorAll('#metrics .metric-reveal');
 
+    function animateCounter(element, target, suffix, duration = 1500) {
+        const startTime = performance.now();
 
-        /* =========================================================
-           METRICS ANIMATION
-        ========================================================= */
+        function update(timestamp) {
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const easedProgress = 1 - Math.pow(1 - progress, 3);
+            const currentValue = Math.floor(easedProgress * target);
 
-        const metricsSection =
-            document.getElementById('metrics');
+            element.textContent = `${currentValue}${suffix}`;
 
-        const clientsCount =
-            document.getElementById('clientsCount');
-
-        const experienceCount =
-            document.getElementById('experienceCount');
-
-        const metricRevealItems =
-            document.querySelectorAll('#metrics .metric-reveal');
-
-
-
-        function animateCounter(
-            element,
-            target,
-            suffix,
-            duration = 1500
-        ) {
-
-            const startTime = performance.now();
-
-
-            function update(timestamp) {
-
-                const progress =
-                    Math.min(
-                        (timestamp - startTime) / duration,
-                        1
-                    );
-
-
-                const easedProgress =
-                    1 - Math.pow(1 - progress, 3);
-
-
-                const currentValue =
-                    Math.floor(
-                        easedProgress * target
-                    );
-
-
-                element.textContent =
-                    `${currentValue}${suffix}`;
-
-
-                if (progress < 1) {
-
-                    requestAnimationFrame(update);
-
-                } else {
-
-                    element.textContent =
-                        `${target}${suffix}`;
-
-                }
-
-            }
-
-
-            requestAnimationFrame(update);
-
-        }
-
-
-
-        function startMetricsAnimation() {
-
-            if (clientsCount && experienceCount) {
-
-                animateCounter(
-                    clientsCount,
-                    36,
-                    '+'
-                );
-
-
-                animateCounter(
-                    experienceCount,
-                    2,
-                    '+ Years'
-                );
-
-            }
-
-
-            metricRevealItems.forEach(item => {
-
-                item.classList.add(
-                    'metric-visible'
-                );
-
-            });
-
-        }
-
-
-
-        if (metricsSection) {
-
-            if ('IntersectionObserver' in window) {
-
-                const metricsObserver =
-                    new IntersectionObserver(
-                        (entries, observer) => {
-
-                            if (
-                                entries.some(
-                                    entry =>
-                                        entry.isIntersecting
-                                )
-                            ) {
-
-                                startMetricsAnimation();
-
-                                observer.unobserve(
-                                    metricsSection
-                                );
-
-                            }
-
-                        },
-                        {
-                            threshold: 0.2
-                        }
-                    );
-
-
-                metricsObserver.observe(
-                    metricsSection
-                );
-
+            if (progress < 1) {
+                requestAnimationFrame(update);
             } else {
-
-                startMetricsAnimation();
-
+                element.textContent = `${target}${suffix}`;
             }
-
         }
 
+        requestAnimationFrame(update);
+    }
 
+    function startMetricsAnimation() {
+        if (clientsCount && experienceCount) {
+            animateCounter(clientsCount, 36, '+');
+            animateCounter(experienceCount, 2, '+ Years');
+        }
 
-        /* =========================================================
-           LIGHT / DARK MODE
-        ========================================================= */
+        metricRevealItems.forEach(item => item.classList.add('metric-visible'));
+    }
 
-        const themeToggleBtn =
-            document.getElementById(
-                'themeToggle'
-            );
+    if (metricsSection) {
+        if ('IntersectionObserver' in window) {
+            const metricsObserver = new IntersectionObserver((entries, observer) => {
+                if (entries.some(entry => entry.isIntersecting)) {
+                    startMetricsAnimation();
+                    observer.unobserve(metricsSection);
+                }
+            }, { threshold: 0.2 });
 
-
-        if (
-            localStorage.getItem(
-                'color-theme'
-            ) === 'dark' ||
-
-            (
-                !(
-                    'color-theme'
-                    in localStorage
-                ) &&
-
-                window.matchMedia(
-                    '(prefers-color-scheme: dark)'
-                ).matches
-            )
-        ) {
-
-            document.documentElement.classList.add(
-                'dark'
-            );
-
+            metricsObserver.observe(metricsSection);
         } else {
+            startMetricsAnimation();
+        }
+    }
 
-            document.documentElement.classList.remove(
-                'dark'
-            );
 
+    /* =========================================================
+       Light / Dark Mode
+    ========================================================= */
+
+    const themeToggleBtn = document.getElementById('themeToggle');
+
+    if (
+        localStorage.getItem('color-theme') === 'dark' ||
+        (
+            !('color-theme' in localStorage) &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+        )
+    ) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+
+    themeToggleBtn.addEventListener('click', function () {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+        }
+    });
+
+
+    /* =========================================================
+       Accent Color
+       Purple -> Red -> Blue -> Purple
+
+       Accent changes are applied to:
+       - Hero decorative lines
+       - Hero dots
+       - Logo
+       - Main headings/labels
+       - Buttons
+       - Timeline
+       - Skill icons
+       - Section dividers
+       - Contact panel
+       - Relevant interactive states
+
+       The person's photo is NOT filtered or recolored.
+    ========================================================= */
+
+    const accentThemeToggle = document.getElementById('accentThemeToggle');
+    const accentThemes = ['purple', 'red', 'blue'];
+
+    let savedAccentTheme = localStorage.getItem('accent-theme') || 'purple';
+
+    if (!accentThemes.includes(savedAccentTheme)) {
+        savedAccentTheme = 'purple';
+    }
+
+    function applyAccentTheme(theme) {
+        if (theme === 'purple') {
+            document.documentElement.removeAttribute('data-accent');
+        } else {
+            document.documentElement.setAttribute('data-accent', theme);
         }
 
+        localStorage.setItem('accent-theme', theme);
+    }
 
+    applyAccentTheme(savedAccentTheme);
 
-        themeToggleBtn.addEventListener(
-            'click',
-            function () {
+    accentThemeToggle.addEventListener('click', function () {
+        const currentIndex = accentThemes.indexOf(savedAccentTheme);
+        const nextIndex = (currentIndex + 1) % accentThemes.length;
 
-                if (
-                    document.documentElement
-                        .classList
-                        .contains('dark')
-                ) {
-
-                    document.documentElement
-                        .classList
-                        .remove('dark');
-
-
-                    localStorage.setItem(
-                        'color-theme',
-                        'light'
-                    );
-
-                } else {
-
-                    document.documentElement
-                        .classList
-                        .add('dark');
-
-
-                    localStorage.setItem(
-                        'color-theme',
-                        'dark'
-                    );
-
-                }
-
-            }
-        );
-
-
-
-        /* =========================================================
-           ACCENT COLOR THEME SWITCHER
-
-           Purple -> Red -> Blue -> Purple
-        ========================================================= */
-
-        const accentThemeToggle =
-            document.getElementById(
-                'accentThemeToggle'
-            );
-
-
-        const accentThemes = [
-            'purple',
-            'red',
-            'blue'
-        ];
-
-
-        let savedAccentTheme =
-            localStorage.getItem(
-                'accent-theme'
-            ) || 'purple';
-
-
-        if (
-            !accentThemes.includes(
-                savedAccentTheme
-            )
-        ) {
-
-            savedAccentTheme =
-                'purple';
-
-        }
-
-
-
-        function applyAccentTheme(theme) {
-
-            if (theme === 'purple') {
-
-                document.documentElement
-                    .removeAttribute(
-                        'data-accent'
-                    );
-
-            } else {
-
-                document.documentElement
-                    .setAttribute(
-                        'data-accent',
-                        theme
-                    );
-
-            }
-
-
-            localStorage.setItem(
-                'accent-theme',
-                theme
-            );
-
-        }
-
-
-
-        applyAccentTheme(
-            savedAccentTheme
-        );
-
-
-
-        accentThemeToggle.addEventListener(
-            'click',
-            function () {
-
-                const currentIndex =
-                    accentThemes.indexOf(
-                        savedAccentTheme
-                    );
-
-
-                const nextIndex =
-                    (
-                        currentIndex + 1
-                    ) %
-                    accentThemes.length;
-
-
-                savedAccentTheme =
-                    accentThemes[nextIndex];
-
-
-                applyAccentTheme(
-                    savedAccentTheme
-                );
-
-            }
-        );
-
-    </script>
+        savedAccentTheme = accentThemes[nextIndex];
+        applyAccentTheme(savedAccentTheme);
+    });
+</script>
 
 </body>
-
 </html>
