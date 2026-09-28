@@ -2,6 +2,7 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,14 +16,19 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
+
     <script>
+
         tailwind.config = {
+
             darkMode: 'class',
 
             theme: {
+
                 extend: {
 
                     fontFamily: {
@@ -30,7 +36,9 @@
                     },
 
                     colors: {
+
                         primary: {
+
                             50: '#f5f3ff',
                             100: '#ede9fe',
                             200: '#ddd6fe',
@@ -42,45 +50,65 @@
                             800: '#5b21b6',
                             900: '#4c1d95',
                             950: '#2e1065',
+
                         }
+
                     }
+
                 }
+
             }
-        }
+
+        };
+
     </script>
 
 
     <style>
 
         /* =========================================================
-           METRICS REVEAL
+           METRICS ANIMATION
         ========================================================= */
 
         .metric-reveal {
+
             opacity: 0;
             transform: translateY(12px) scale(0.97);
+
             transition:
                 opacity 0.7s ease,
                 transform 0.7s ease;
+
         }
 
+
         .metric-reveal.metric-visible {
+
             opacity: 1;
             transform: translateY(0) scale(1);
+
         }
+
 
         .metric-delay-1 {
             transition-delay: 0.15s;
         }
+
 
         .metric-delay-2 {
             transition-delay: 0.3s;
         }
 
 
+
         /* =========================================================
            ACCENT COLOR SYSTEM
+
+           Purple = Default
+           Red
+           Blue
         ========================================================= */
+
 
         :root {
 
@@ -96,13 +124,12 @@
             --accent-900: #4c1d95;
             --accent-950: #2e1065;
 
-            --hero-soft: rgba(139, 92, 246, 0.08);
-            --hero-line: rgba(139, 92, 246, 0.45);
-            --hero-dot: #8b5cf6;
         }
 
 
-        /* RED */
+        /* =========================================================
+           RED THEME
+        ========================================================= */
 
         html[data-accent="red"] {
 
@@ -118,13 +145,12 @@
             --accent-900: #7f1d1d;
             --accent-950: #450a0a;
 
-            --hero-soft: rgba(239, 68, 68, 0.08);
-            --hero-line: rgba(239, 68, 68, 0.45);
-            --hero-dot: #ef4444;
         }
 
 
-        /* BLUE */
+        /* =========================================================
+           BLUE THEME
+        ========================================================= */
 
         html[data-accent="blue"] {
 
@@ -140,10 +166,8 @@
             --accent-900: #1e3a8a;
             --accent-950: #172554;
 
-            --hero-soft: rgba(59, 130, 246, 0.08);
-            --hero-line: rgba(59, 130, 246, 0.45);
-            --hero-dot: #3b82f6;
         }
+
 
 
         /* =========================================================
@@ -169,6 +193,7 @@
         .text-primary-700 {
             color: var(--accent-700) !important;
         }
+
 
         .bg-primary-50 {
             background-color: var(--accent-50) !important;
@@ -198,6 +223,7 @@
             background-color: var(--accent-950) !important;
         }
 
+
         .border-primary-200 {
             border-color: var(--accent-200) !important;
         }
@@ -212,6 +238,7 @@
 
 
         .from-primary-600 {
+
             --tw-gradient-from:
                 var(--accent-600)
                 var(--tw-gradient-from-position) !important;
@@ -219,18 +246,25 @@
             --tw-gradient-to:
                 rgb(255 255 255 / 0)
                 var(--tw-gradient-to-position) !important;
+
         }
 
+
         .to-indigo-600 {
+
             --tw-gradient-to:
                 var(--accent-700)
                 var(--tw-gradient-to-position) !important;
+
         }
 
+
         .to-indigo-700 {
+
             --tw-gradient-to:
                 var(--accent-800)
                 var(--tw-gradient-to-position) !important;
+
         }
 
 
@@ -238,13 +272,16 @@
             color: var(--accent-400) !important;
         }
 
+
         .hover\:text-primary-600:hover {
             color: var(--accent-600) !important;
         }
 
+
         .hover\:bg-primary-700:hover {
             background-color: var(--accent-700) !important;
         }
+
 
         .hover\:bg-primary-800:hover {
             background-color: var(--accent-800) !important;
@@ -252,242 +289,29 @@
 
 
         .shadow-primary-500\/20 {
+
             --tw-shadow-color:
                 color-mix(
                     in srgb,
                     var(--accent-500) 20%,
                     transparent
                 );
+
         }
+
 
 
         /* =========================================================
-           HERO PORTRAIT
-           
-           IMPORTANT:
-           There is NO BOX around the photo.
-           The person remains transparent.
-        ========================================================= */
-
-        .hero-portrait {
-            position: relative;
-            width: 360px;
-            height: 390px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            isolation: isolate;
-        }
-
-
-        /* Single-color soft background glow */
-
-        .hero-portrait::before {
-            content: "";
-            position: absolute;
-
-            width: 290px;
-            height: 290px;
-
-            left: 50%;
-            top: 48%;
-
-            transform: translate(-50%, -50%);
-
-            background: var(--hero-soft);
-
-            border-radius: 50%;
-
-            filter: blur(15px);
-
-            z-index: -3;
-
-            transition:
-                background-color 0.35s ease,
-                transform 0.35s ease;
-        }
-
-
-        /* Vertical accent line */
-
-        .hero-line {
-            position: absolute;
-
-            width: 4px;
-            height: 145px;
-
-            left: 38px;
-            top: 92px;
-
-            background: var(--hero-line);
-
-            border-radius: 999px;
-
-            opacity: 0.8;
-
-            transition:
-                background-color 0.35s ease,
-                height 0.35s ease;
-        }
-
-
-        /* Small horizontal accent line */
-
-        .hero-line-small {
-            position: absolute;
-
-            width: 70px;
-            height: 4px;
-
-            left: 38px;
-            top: 92px;
-
-            background: var(--hero-line);
-
-            border-radius: 999px;
-
-            transition:
-                background-color 0.35s ease,
-                width 0.35s ease;
-        }
-
-
-        /* Decorative dots */
-
-        .hero-dots {
-            position: absolute;
-
-            right: 30px;
-            top: 130px;
-
-            width: 50px;
-            height: 50px;
-
-            background-image:
-                radial-gradient(
-                    circle,
-                    var(--hero-dot) 3px,
-                    transparent 3.5px
-                );
-
-            background-size: 16px 16px;
-
-            opacity: 0.9;
-
-            transition:
-                background-image 0.35s ease;
-        }
-
-
-        /* Bottom accent line */
-
-        .hero-bottom-line {
-            position: absolute;
-
-            bottom: 30px;
-            left: 40px;
-
-            width: 280px;
-            height: 3px;
-
-            background: var(--hero-line);
-
-            border-radius: 999px;
-
-            opacity: 0.8;
-
-            transition:
-                background-color 0.35s ease;
-        }
-
-
-        /* Small right bracket */
-
-        .hero-bracket {
-            position: absolute;
-
-            right: 28px;
-            bottom: 78px;
-
-            width: 55px;
-            height: 80px;
-
-            border-right: 4px solid var(--hero-line);
-            border-bottom: 4px solid var(--hero-line);
-
-            border-radius: 0 14px 14px 0;
-
-            opacity: 0.8;
-
-            transition:
-                border-color 0.35s ease;
-        }
-
-
-        /* =========================================================
-           ACTUAL PHOTO
-           
-           No border.
-           No rounded container.
-           No overflow clipping.
-           No background.
-        ========================================================= */
-
-        .hero-photo {
-            position: relative;
-
-            z-index: 5;
-
-            width: 310px;
-            height: auto;
-
-            display: block;
-
-            object-fit: contain;
-
-            filter: drop-shadow(
-                0 22px 25px
-                rgba(15, 23, 42, 0.18)
-            );
-
-            transition:
-                filter 0.35s ease,
-                transform 0.35s ease;
-        }
-
-
-        .hero-photo:hover {
-            transform: translateY(-5px);
-        }
-
-
-        /* =========================================================
-           DARK MODE HERO
-        ========================================================= */
-
-        html.dark .hero-portrait::before {
-            background: var(--hero-soft);
-            opacity: 1.5;
-        }
-
-        html.dark .hero-photo {
-            filter:
-                drop-shadow(
-                    0 22px 30px
-                    rgba(0, 0, 0, 0.45)
-                );
-        }
-
-
-        /* =========================================================
-           THEME BUTTON
+           ACCENT THEME BUTTON
         ========================================================= */
 
         #accentThemeToggle {
             position: relative;
         }
 
+
         #accentThemeToggle .theme-dot {
+
             width: 7px;
             height: 7px;
 
@@ -502,9 +326,210 @@
 
             background-color: var(--accent-500);
 
+        }
+
+
+
+        /* =========================================================
+           HERO PORTRAIT
+           
+           IMPORTANT:
+           The PNG itself is transparent.
+           There is NO circular image container.
+           There is NO circular glow.
+           There is NO clipping.
+        ========================================================= */
+
+
+        .hero-visual {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 560px;
+
+            min-height: 430px;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: center;
+
+            isolation: isolate;
+
+        }
+
+
+        /*
+           Flat background behind the transparent PNG.
+
+           This is deliberately NOT a circle.
+           It does not clip the image.
+        */
+
+        .hero-backdrop {
+
+            position: absolute;
+
+            left: 24px;
+            right: 24px;
+
+            top: 32px;
+            bottom: 0;
+
+            border-radius: 24px;
+
+            background-color: var(--hero-backdrop);
+
+            z-index: 0;
+
             transition:
                 background-color 0.3s ease;
+
         }
+
+
+        /*
+           Light mode
+        */
+
+        :root {
+
+            --hero-backdrop: #eef2ff;
+
+        }
+
+
+        /*
+           Dark mode
+        */
+
+        html.dark {
+
+            --hero-backdrop: #172033;
+
+        }
+
+
+        /*
+           Purple accent
+        */
+
+        html:not([data-accent]) {
+
+            --hero-backdrop: #201b35;
+
+        }
+
+
+        /*
+           Red accent
+        */
+
+        html[data-accent="red"] {
+
+            --hero-backdrop: #2a171b;
+
+        }
+
+
+        /*
+           Blue accent
+        */
+
+        html[data-accent="blue"] {
+
+            --hero-backdrop: #17243a;
+
+        }
+
+
+        /*
+           Transparent PNG.
+
+           No:
+           - filter
+           - opacity
+           - blend mode
+           - clipping
+           - border
+           - circle
+        */
+
+        .hero-photo {
+
+            position: relative;
+
+            z-index: 2;
+
+            display: block;
+
+            width: min(100%, 520px);
+
+            height: auto;
+
+            object-fit: contain;
+
+            filter: none;
+
+            mix-blend-mode: normal;
+
+            transition:
+                transform 0.3s ease;
+
+        }
+
+
+        /*
+           Very subtle movement.
+           Does NOT modify the image.
+        */
+
+        .hero-visual:hover .hero-photo {
+
+            transform: translateY(-4px);
+
+        }
+
+
+
+        /* =========================================================
+           MOBILE HERO
+        ========================================================= */
+
+        @media (max-width: 767px) {
+
+            .hero-visual {
+
+                min-height: 360px;
+
+                max-width: 430px;
+
+            }
+
+
+            .hero-backdrop {
+
+                left: 16px;
+                right: 16px;
+
+                top: 32px;
+
+                border-radius: 20px;
+
+            }
+
+
+            .hero-photo {
+
+                width: min(100%, 400px);
+
+            }
+
+        }
+
 
 
         /* =========================================================
@@ -514,59 +539,27 @@
         @media (prefers-reduced-motion: reduce) {
 
             .metric-reveal {
+
                 opacity: 1;
+
                 transform: none;
+
                 transition: none;
+
             }
+
 
             .hero-photo {
+
                 transition: none;
+
             }
 
-        }
 
+            .hero-visual:hover .hero-photo {
 
-        /* =========================================================
-           RESPONSIVE HERO PORTRAIT
-        ========================================================= */
+                transform: none;
 
-        @media (max-width: 767px) {
-
-            .hero-portrait {
-                width: 310px;
-                height: 350px;
-            }
-
-            .hero-photo {
-                width: 280px;
-            }
-
-            .hero-line {
-                left: 20px;
-                top: 75px;
-                height: 115px;
-            }
-
-            .hero-line-small {
-                left: 20px;
-                top: 75px;
-                width: 55px;
-            }
-
-            .hero-dots {
-                right: 12px;
-                top: 115px;
-            }
-
-            .hero-bracket {
-                right: 8px;
-                bottom: 65px;
-            }
-
-            .hero-bottom-line {
-                left: 25px;
-                width: 245px;
-                bottom: 22px;
             }
 
         }
@@ -594,9 +587,8 @@
             <a href="#"
                 class="text-xl font-bold tracking-tight text-primary-600 dark:text-primary-500">
 
-                Fardit<span class="text-slate-800 dark:text-slate-100">
-                    .Ahamed
-                </span>
+                Fardit<span
+                    class="text-slate-800 dark:text-slate-100">.Ahamed</span>
 
             </a>
 
@@ -645,13 +637,13 @@
                     <i class="fa-solid fa-moon text-lg dark:hidden"></i>
 
                     <i
-                        class="fa-solid fa-sun text-lg hidden dark:block text-amber-400">
-                    </i>
+                        class="fa-solid fa-sun text-lg hidden dark:block text-amber-400"></i>
 
                 </button>
 
 
-                <!-- Accent Color -->
+
+                <!-- Accent Theme -->
 
                 <button id="accentThemeToggle"
                     class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative"
@@ -663,6 +655,7 @@
                     <span class="theme-dot"></span>
 
                 </button>
+
 
 
                 <!-- Get In Touch -->
@@ -683,11 +676,12 @@
 
 
     <!-- =========================================================
-         HERO
+         HERO SECTION
     ========================================================= -->
 
     <section
         class="pt-32 pb-20 md:pt-40 md:pb-28 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
 
         <div
             class="flex flex-col md:flex-row items-center justify-between gap-12">
@@ -703,8 +697,7 @@
                     class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-950/50 border border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-300 text-xs font-semibold uppercase tracking-wider">
 
                     <span
-                        class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse">
-                    </span>
+                        class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
 
                     Available for Key Roles
 
@@ -735,7 +728,8 @@
                 </p>
 
 
-                <!-- CONTACT -->
+
+                <!-- Contact Badges -->
 
                 <div
                     class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-sm text-slate-600 dark:text-slate-400">
@@ -744,7 +738,8 @@
                     <a href="mailto:shawkot101@gmail.com"
                         class="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
 
-                        <i class="fa-solid fa-envelope text-primary-500"></i>
+                        <i
+                            class="fa-solid fa-envelope text-primary-500"></i>
 
                         shawkot101@gmail.com
 
@@ -754,7 +749,8 @@
                     <a href="tel:01766957937"
                         class="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
 
-                        <i class="fa-solid fa-phone text-primary-500"></i>
+                        <i
+                            class="fa-solid fa-phone text-primary-500"></i>
 
                         +880 1766 957937
 
@@ -763,7 +759,8 @@
 
                     <span class="flex items-center gap-2">
 
-                        <i class="fa-solid fa-location-dot text-primary-500"></i>
+                        <i
+                            class="fa-solid fa-location-dot text-primary-500"></i>
 
                         Dhaka, Bangladesh
 
@@ -772,7 +769,8 @@
                 </div>
 
 
-                <!-- ACTION BUTTONS -->
+
+                <!-- Action Buttons -->
 
                 <div
                     class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
@@ -783,7 +781,8 @@
                         rel="noopener noreferrer"
                         class="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-primary-600 dark:hover:bg-primary-700 rounded-xl transition-all shadow-md">
 
-                        <i class="fa-brands fa-linkedin text-lg"></i>
+                        <i
+                            class="fa-brands fa-linkedin text-lg"></i>
 
                         LinkedIn Profile
 
@@ -793,7 +792,8 @@
                     <a href="#contact"
                         class="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all shadow-sm">
 
-                        <i class="fa-solid fa-paper-plane text-primary-500"></i>
+                        <i
+                            class="fa-solid fa-paper-plane text-primary-500"></i>
 
                         Get In Touch
 
@@ -806,38 +806,30 @@
 
 
             <!-- =====================================================
-                 BACKGROUNDLESS PORTRAIT
+                 TRANSPARENT PORTRAIT
                  
                  IMPORTANT:
-                 No image container.
-                 No border.
-                 No box.
-                 Decorations are independent from the image.
+                 NO CIRCLE
+                 NO IMAGE CONTAINER
+                 NO CLIPPING
+                 NO BORDER
+                 NO GLOW
             ====================================================== -->
 
-            <div class="hero-portrait">
+            <div class="hero-visual">
+
+                <!-- Flat theme-dependent background -->
+
+                <div class="hero-backdrop"></div>
 
 
-                <!-- Decorative elements -->
-
-                <div class="hero-line"></div>
-
-                <div class="hero-line-small"></div>
-
-                <div class="hero-dots"></div>
-
-                <div class="hero-bracket"></div>
-
-                <div class="hero-bottom-line"></div>
-
-
-                <!-- ACTUAL PHOTO -->
+                <!-- Your transparent PNG -->
 
                 <img
                     src="Fardit Ahamed.png"
                     alt="Fardit Ahamed"
                     class="hero-photo"
-                    onerror="this.src='https://ui-avatars.com/api/?name=Fardit+Ahamed&background=0284c7&color=fff&size=256'">
+                    onerror="this.src='https://ui-avatars.com/api/?name=Fardit+Ahamed&background=0284c7&color=fff&size=512'">
 
             </div>
 
@@ -853,6 +845,7 @@
 
     <section id="metrics"
         class="bg-white dark:bg-slate-800/50 border-y border-slate-200 dark:border-slate-800 py-10">
+
 
         <div
             class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
@@ -958,14 +951,14 @@
             </h2>
 
             <div
-                class="w-16 h-1 bg-primary-600 mx-auto rounded-full">
-            </div>
+                class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
 
         </div>
 
 
         <div
             class="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-10 shadow-xl border border-slate-200/60 dark:border-slate-700/60">
+
 
             <p
                 class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
@@ -1002,6 +995,7 @@
     <section id="experience"
         class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
 
+
         <div
             class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -1017,8 +1011,7 @@
                 </h2>
 
                 <div
-                    class="w-16 h-1 bg-primary-600 mx-auto rounded-full">
-                </div>
+                    class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
 
             </div>
 
@@ -1032,9 +1025,9 @@
                 <div
                     class="relative pl-6 md:pl-10 group">
 
+
                     <div
-                        class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primary-600 ring-4 ring-white dark:ring-slate-900">
-                    </div>
+                        class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primary-600 ring-4 ring-white dark:ring-slate-900"></div>
 
 
                     <div
@@ -1043,6 +1036,7 @@
 
                         <div
                             class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+
 
                             <div>
 
@@ -1075,6 +1069,7 @@
 
                         <ul
                             class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
+
 
                             <li>
                                 Provide application and solution support for a SaaS-based Card Management System (CMS) serving ~36 banking clients.
@@ -1129,9 +1124,9 @@
                 <div
                     class="relative pl-6 md:pl-10 group">
 
+
                     <div
-                        class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-slate-900">
-                    </div>
+                        class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-slate-900"></div>
 
 
                     <div
@@ -1140,6 +1135,7 @@
 
                         <div
                             class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+
 
                             <div>
 
@@ -1173,6 +1169,7 @@
                         <ul
                             class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
 
+
                             <li>
                                 Conducted IELTS training in Reading, Listening, Writing, and Speaking modules.
                             </li>
@@ -1198,9 +1195,9 @@
                 <div
                     class="relative pl-6 md:pl-10 group">
 
+
                     <div
-                        class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-slate-900">
-                    </div>
+                        class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-slate-900"></div>
 
 
                     <div
@@ -1209,6 +1206,7 @@
 
                         <div
                             class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+
 
                             <div>
 
@@ -1241,6 +1239,7 @@
 
                         <ul
                             class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
+
 
                             <li>
                                 Provided online customer and operational support through digital communication channels.
@@ -1283,8 +1282,7 @@
             </h2>
 
             <div
-                class="w-16 h-1 bg-primary-600 mx-auto rounded-full">
-            </div>
+                class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
 
         </div>
 
@@ -1322,6 +1320,7 @@
             </div>
 
 
+
             <!-- Skill 2 -->
 
             <div
@@ -1349,6 +1348,7 @@
                 </p>
 
             </div>
+
 
 
             <!-- Skill 3 -->
@@ -1380,6 +1380,7 @@
             </div>
 
 
+
             <!-- Skill 4 -->
 
             <div
@@ -1409,6 +1410,7 @@
             </div>
 
 
+
             <!-- Skill 5 -->
 
             <div
@@ -1436,6 +1438,7 @@
                 </p>
 
             </div>
+
 
 
             <!-- Skill 6 -->
@@ -1479,6 +1482,7 @@
     <section id="education"
         class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
 
+
         <div
             class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -1494,8 +1498,7 @@
                 </h2>
 
                 <div
-                    class="w-16 h-1 bg-primary-600 mx-auto rounded-full">
-                </div>
+                    class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
 
             </div>
 
@@ -1508,11 +1511,11 @@
 
                 <div class="space-y-6">
 
-
                     <h3
                         class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
 
-                        <i class="fa-solid fa-graduation-cap text-primary-600"></i>
+                        <i
+                            class="fa-solid fa-graduation-cap text-primary-600"></i>
 
                         Education
 
@@ -1594,11 +1597,11 @@
 
                 <div class="space-y-6">
 
-
                     <h3
                         class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
 
-                        <i class="fa-solid fa-certificate text-primary-600"></i>
+                        <i
+                            class="fa-solid fa-certificate text-primary-600"></i>
 
                         Professional Development
 
@@ -1607,7 +1610,6 @@
 
                     <div
                         class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-4">
-
 
                         <div>
 
@@ -1638,8 +1640,7 @@
                             View Certificate
 
                             <i
-                                class="fa-solid fa-arrow-up-right-from-square text-xs">
-                            </i>
+                                class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
 
                         </a>
 
@@ -1648,7 +1649,6 @@
 
                     <div
                         class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-4">
-
 
                         <div>
 
@@ -1679,8 +1679,7 @@
                             View Certificate
 
                             <i
-                                class="fa-solid fa-arrow-up-right-from-square text-xs">
-                            </i>
+                                class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
 
                         </a>
 
@@ -1767,7 +1766,9 @@
         class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-500">
 
         <p>
+
             © <span id="year"></span> Fardit Ahamed. All rights reserved.
+
         </p>
 
     </footer>
@@ -1782,7 +1783,7 @@
 
 
         /* =========================================================
-           YEAR
+           CURRENT YEAR
         ========================================================= */
 
         document.getElementById('year').textContent =
@@ -1804,9 +1805,8 @@
             document.getElementById('experienceCount');
 
         const metricRevealItems =
-            document.querySelectorAll(
-                '#metrics .metric-reveal'
-            );
+            document.querySelectorAll('#metrics .metric-reveal');
+
 
 
         function animateCounter(
@@ -1823,17 +1823,13 @@
 
                 const progress =
                     Math.min(
-                        (timestamp - startTime) /
-                        duration,
+                        (timestamp - startTime) / duration,
                         1
                     );
 
 
                 const easedProgress =
-                    1 - Math.pow(
-                        1 - progress,
-                        3
-                    );
+                    1 - Math.pow(1 - progress, 3);
 
 
                 const currentValue =
@@ -1865,12 +1861,10 @@
         }
 
 
+
         function startMetricsAnimation() {
 
-            if (
-                clientsCount &&
-                experienceCount
-            ) {
+            if (clientsCount && experienceCount) {
 
                 animateCounter(
                     clientsCount,
@@ -1899,16 +1893,13 @@
         }
 
 
+
         if (metricsSection) {
 
-            if (
-                'IntersectionObserver'
-                in window
-            ) {
+            if ('IntersectionObserver' in window) {
 
                 const metricsObserver =
                     new IntersectionObserver(
-
                         (entries, observer) => {
 
                             if (
@@ -1927,11 +1918,9 @@
                             }
 
                         },
-
                         {
                             threshold: 0.2
                         }
-
                     );
 
 
@@ -1960,39 +1949,34 @@
 
 
         if (
-
             localStorage.getItem(
                 'color-theme'
-            ) === 'dark'
-
-            ||
+            ) === 'dark' ||
 
             (
-
                 !(
                     'color-theme'
                     in localStorage
-                )
-
-                &&
+                ) &&
 
                 window.matchMedia(
                     '(prefers-color-scheme: dark)'
                 ).matches
-
             )
-
         ) {
 
-            document.documentElement
-                .classList.add('dark');
+            document.documentElement.classList.add(
+                'dark'
+            );
 
         } else {
 
-            document.documentElement
-                .classList.remove('dark');
+            document.documentElement.classList.remove(
+                'dark'
+            );
 
         }
+
 
 
         themeToggleBtn.addEventListener(
@@ -2009,6 +1993,7 @@
                         .classList
                         .remove('dark');
 
+
                     localStorage.setItem(
                         'color-theme',
                         'light'
@@ -2019,6 +2004,7 @@
                     document.documentElement
                         .classList
                         .add('dark');
+
 
                     localStorage.setItem(
                         'color-theme',
@@ -2033,8 +2019,8 @@
 
 
         /* =========================================================
-           ACCENT COLOR THEME
-           
+           ACCENT COLOR THEME SWITCHER
+
            Purple -> Red -> Blue -> Purple
         ========================================================= */
 
@@ -2069,9 +2055,8 @@
         }
 
 
-        function applyAccentTheme(
-            theme
-        ) {
+
+        function applyAccentTheme(theme) {
 
             if (theme === 'purple') {
 
@@ -2099,9 +2084,11 @@
         }
 
 
+
         applyAccentTheme(
             savedAccentTheme
         );
+
 
 
         accentThemeToggle.addEventListener(
@@ -2122,9 +2109,7 @@
 
 
                 savedAccentTheme =
-                    accentThemes[
-                        nextIndex
-                    ];
+                    accentThemes[nextIndex];
 
 
                 applyAccentTheme(
