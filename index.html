@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Fardit Ahamed | Portfolio</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- FontAwesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <script>
         tailwind.config = {
             darkMode: 'class',
+
             theme: {
                 extend: {
+
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                     },
+
                     colors: {
                         primary: {
                             50: '#f5f3ff',
@@ -42,14 +49,19 @@
         }
     </script>
 
+
     <style>
+
         /* =========================================================
-           GENERAL / METRICS
+           METRICS REVEAL
         ========================================================= */
+
         .metric-reveal {
             opacity: 0;
             transform: translateY(12px) scale(0.97);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+            transition:
+                opacity 0.7s ease,
+                transform 0.7s ease;
         }
 
         .metric-reveal.metric-visible {
@@ -57,20 +69,21 @@
             transform: translateY(0) scale(1);
         }
 
-        .metric-delay-1 { transition-delay: 0.15s; }
-        .metric-delay-2 { transition-delay: 0.3s; }
+        .metric-delay-1 {
+            transition-delay: 0.15s;
+        }
+
+        .metric-delay-2 {
+            transition-delay: 0.3s;
+        }
+
 
         /* =========================================================
-           ACCENT THEMES
-           Purple = Default
-           Red
-           Blue
-
-           The theme now controls the complete visual accent system,
-           including the portrait background, gradients, borders,
-           icons, buttons, timeline, cards and interactive states.
+           ACCENT COLOR SYSTEM
         ========================================================= */
+
         :root {
+
             --accent-50: #f5f3ff;
             --accent-100: #ede9fe;
             --accent-200: #ddd6fe;
@@ -82,11 +95,17 @@
             --accent-800: #5b21b6;
             --accent-900: #4c1d95;
             --accent-950: #2e1065;
-            --portrait-bg-light: #ede9fe;
-            --portrait-bg-dark: #2e1065;
+
+            --hero-soft: rgba(139, 92, 246, 0.08);
+            --hero-line: rgba(139, 92, 246, 0.45);
+            --hero-dot: #8b5cf6;
         }
 
+
+        /* RED */
+
         html[data-accent="red"] {
+
             --accent-50: #fef2f2;
             --accent-100: #fee2e2;
             --accent-200: #fecaca;
@@ -98,11 +117,17 @@
             --accent-800: #991b1b;
             --accent-900: #7f1d1d;
             --accent-950: #450a0a;
-            --portrait-bg-light: #fee2e2;
-            --portrait-bg-dark: #450a0a;
+
+            --hero-soft: rgba(239, 68, 68, 0.08);
+            --hero-line: rgba(239, 68, 68, 0.45);
+            --hero-dot: #ef4444;
         }
 
+
+        /* BLUE */
+
         html[data-accent="blue"] {
+
             --accent-50: #eff6ff;
             --accent-100: #dbeafe;
             --accent-200: #bfdbfe;
@@ -114,1193 +139,2003 @@
             --accent-800: #1e40af;
             --accent-900: #1e3a8a;
             --accent-950: #172554;
-            --portrait-bg-light: #dbeafe;
-            --portrait-bg-dark: #172554;
+
+            --hero-soft: rgba(59, 130, 246, 0.08);
+            --hero-line: rgba(59, 130, 246, 0.45);
+            --hero-dot: #3b82f6;
         }
 
-        /* Redirect Tailwind primary utilities to the active theme. */
-        .text-primary-300 { color: var(--accent-300) !important; }
-        .text-primary-400 { color: var(--accent-400) !important; }
-        .text-primary-500 { color: var(--accent-500) !important; }
-        .text-primary-600 { color: var(--accent-600) !important; }
-        .text-primary-700 { color: var(--accent-700) !important; }
-        .text-primary-800 { color: var(--accent-800) !important; }
 
-        .bg-primary-50 { background-color: var(--accent-50) !important; }
-        .bg-primary-100 { background-color: var(--accent-100) !important; }
-        .bg-primary-500 { background-color: var(--accent-500) !important; }
-        .bg-primary-600 { background-color: var(--accent-600) !important; }
-        .bg-primary-700 { background-color: var(--accent-700) !important; }
-        .bg-primary-800 { background-color: var(--accent-800) !important; }
-        .bg-primary-950 { background-color: var(--accent-950) !important; }
+        /* =========================================================
+           TAILWIND PRIMARY OVERRIDES
+        ========================================================= */
 
-        .border-primary-200 { border-color: var(--accent-200) !important; }
-        .border-primary-500 { border-color: var(--accent-500) !important; }
-        .border-primary-800 { border-color: var(--accent-800) !important; }
+        .text-primary-300 {
+            color: var(--accent-300) !important;
+        }
 
-        .ring-primary-500 { --tw-ring-color: var(--accent-500) !important; }
+        .text-primary-400 {
+            color: var(--accent-400) !important;
+        }
+
+        .text-primary-500 {
+            color: var(--accent-500) !important;
+        }
+
+        .text-primary-600 {
+            color: var(--accent-600) !important;
+        }
+
+        .text-primary-700 {
+            color: var(--accent-700) !important;
+        }
+
+        .bg-primary-50 {
+            background-color: var(--accent-50) !important;
+        }
+
+        .bg-primary-100 {
+            background-color: var(--accent-100) !important;
+        }
+
+        .bg-primary-500 {
+            background-color: var(--accent-500) !important;
+        }
+
+        .bg-primary-600 {
+            background-color: var(--accent-600) !important;
+        }
+
+        .bg-primary-700 {
+            background-color: var(--accent-700) !important;
+        }
+
+        .bg-primary-800 {
+            background-color: var(--accent-800) !important;
+        }
+
+        .bg-primary-950 {
+            background-color: var(--accent-950) !important;
+        }
+
+        .border-primary-200 {
+            border-color: var(--accent-200) !important;
+        }
+
+        .border-primary-500 {
+            border-color: var(--accent-500) !important;
+        }
+
+        .border-primary-800 {
+            border-color: var(--accent-800) !important;
+        }
+
 
         .from-primary-600 {
-            --tw-gradient-from: var(--accent-600) var(--tw-gradient-from-position) !important;
-            --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position) !important;
+            --tw-gradient-from:
+                var(--accent-600)
+                var(--tw-gradient-from-position) !important;
+
+            --tw-gradient-to:
+                rgb(255 255 255 / 0)
+                var(--tw-gradient-to-position) !important;
         }
 
         .to-indigo-600 {
-            --tw-gradient-to: var(--accent-700) var(--tw-gradient-to-position) !important;
+            --tw-gradient-to:
+                var(--accent-700)
+                var(--tw-gradient-to-position) !important;
         }
 
         .to-indigo-700 {
-            --tw-gradient-to: var(--accent-800) var(--tw-gradient-to-position) !important;
+            --tw-gradient-to:
+                var(--accent-800)
+                var(--tw-gradient-to-position) !important;
         }
 
-        .hover\:text-primary-400:hover { color: var(--accent-400) !important; }
-        .hover\:text-primary-600:hover { color: var(--accent-600) !important; }
-        .hover\:bg-primary-700:hover { background-color: var(--accent-700) !important; }
-        .hover\:bg-primary-800:hover { background-color: var(--accent-800) !important; }
+
+        .hover\:text-primary-400:hover {
+            color: var(--accent-400) !important;
+        }
+
+        .hover\:text-primary-600:hover {
+            color: var(--accent-600) !important;
+        }
+
+        .hover\:bg-primary-700:hover {
+            background-color: var(--accent-700) !important;
+        }
+
+        .hover\:bg-primary-800:hover {
+            background-color: var(--accent-800) !important;
+        }
+
 
         .shadow-primary-500\/20 {
-            --tw-shadow-color: color-mix(in srgb, var(--accent-500) 20%, transparent);
+            --tw-shadow-color:
+                color-mix(
+                    in srgb,
+                    var(--accent-500) 20%,
+                    transparent
+                );
         }
+
 
         /* =========================================================
-           THEME-DEPENDENT PORTRAIT
-           No circle and no multi-colour background.
-           The original photo pixels are preserved; JavaScript only
-           removes the connected white background from the source.
+           HERO PORTRAIT
+           
+           IMPORTANT:
+           There is NO BOX around the photo.
+           The person remains transparent.
         ========================================================= */
-        .portrait-stage {
+
+        .hero-portrait {
             position: relative;
-            width: 18rem;
-            height: 21rem;
-            border-radius: 2rem;
-            overflow: hidden;
-            background-color: var(--portrait-bg-light);
-            border: 1px solid var(--accent-200);
-            box-shadow: 0 24px 60px color-mix(in srgb, var(--accent-600) 18%, transparent);
+            width: 360px;
+            height: 390px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            isolation: isolate;
+        }
+
+
+        /* Single-color soft background glow */
+
+        .hero-portrait::before {
+            content: "";
+            position: absolute;
+
+            width: 290px;
+            height: 290px;
+
+            left: 50%;
+            top: 48%;
+
+            transform: translate(-50%, -50%);
+
+            background: var(--hero-soft);
+
+            border-radius: 50%;
+
+            filter: blur(15px);
+
+            z-index: -3;
+
             transition:
-                background-color 300ms ease,
-                border-color 300ms ease,
-                box-shadow 300ms ease,
-                transform 300ms ease;
+                background-color 0.35s ease,
+                transform 0.35s ease;
         }
 
-        .dark .portrait-stage {
-            background-color: var(--portrait-bg-dark);
-            border-color: var(--accent-800);
-            box-shadow: 0 24px 60px color-mix(in srgb, var(--accent-500) 22%, transparent);
-        }
 
-        .portrait-stage:hover {
-            transform: translateY(-4px);
-        }
+        /* Vertical accent line */
 
-        .portrait-stage canvas {
+        .hero-line {
             position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center bottom;
-            display: block;
+
+            width: 4px;
+            height: 145px;
+
+            left: 38px;
+            top: 92px;
+
+            background: var(--hero-line);
+
+            border-radius: 999px;
+
+            opacity: 0.8;
+
+            transition:
+                background-color 0.35s ease,
+                height 0.35s ease;
         }
 
-        /* Small theme marker; same accent family, not a separate colour theme. */
-        .portrait-stage::after {
-            content: '';
+
+        /* Small horizontal accent line */
+
+        .hero-line-small {
             position: absolute;
-            left: 1.25rem;
-            right: 1.25rem;
-            bottom: 0.85rem;
-            height: 3px;
-            border-radius: 9999px;
-            background: var(--accent-600);
+
+            width: 70px;
+            height: 4px;
+
+            left: 38px;
+            top: 92px;
+
+            background: var(--hero-line);
+
+            border-radius: 999px;
+
+            transition:
+                background-color 0.35s ease,
+                width 0.35s ease;
+        }
+
+
+        /* Decorative dots */
+
+        .hero-dots {
+            position: absolute;
+
+            right: 30px;
+            top: 130px;
+
+            width: 50px;
+            height: 50px;
+
+            background-image:
+                radial-gradient(
+                    circle,
+                    var(--hero-dot) 3px,
+                    transparent 3.5px
+                );
+
+            background-size: 16px 16px;
+
             opacity: 0.9;
+
+            transition:
+                background-image 0.35s ease;
         }
 
-        @media (min-width: 640px) {
-            .portrait-stage {
-                width: 21rem;
-                height: 24rem;
-            }
+
+        /* Bottom accent line */
+
+        .hero-bottom-line {
+            position: absolute;
+
+            bottom: 30px;
+            left: 40px;
+
+            width: 280px;
+            height: 3px;
+
+            background: var(--hero-line);
+
+            border-radius: 999px;
+
+            opacity: 0.8;
+
+            transition:
+                background-color 0.35s ease;
         }
 
-        /* Theme-aware soft sections. */
-        .theme-soft-section {
-            background-color: color-mix(in srgb, var(--accent-50) 45%, transparent);
-            transition: background-color 300ms ease;
+
+        /* Small right bracket */
+
+        .hero-bracket {
+            position: absolute;
+
+            right: 28px;
+            bottom: 78px;
+
+            width: 55px;
+            height: 80px;
+
+            border-right: 4px solid var(--hero-line);
+            border-bottom: 4px solid var(--hero-line);
+
+            border-radius: 0 14px 14px 0;
+
+            opacity: 0.8;
+
+            transition:
+                border-color 0.35s ease;
         }
 
-        .dark .theme-soft-section {
-            background-color: color-mix(in srgb, var(--accent-950) 35%, transparent);
+
+        /* =========================================================
+           ACTUAL PHOTO
+           
+           No border.
+           No rounded container.
+           No overflow clipping.
+           No background.
+        ========================================================= */
+
+        .hero-photo {
+            position: relative;
+
+            z-index: 5;
+
+            width: 310px;
+            height: auto;
+
+            display: block;
+
+            object-fit: contain;
+
+            filter: drop-shadow(
+                0 22px 25px
+                rgba(15, 23, 42, 0.18)
+            );
+
+            transition:
+                filter 0.35s ease,
+                transform 0.35s ease;
         }
 
-        /* Contact panel uses the same active accent instead of a fixed indigo. */
-        .theme-contact {
-            background: linear-gradient(135deg, var(--accent-600), var(--accent-800));
+
+        .hero-photo:hover {
+            transform: translateY(-5px);
         }
 
-        .theme-contact-button {
-            background-color: color-mix(in srgb, var(--accent-950) 70%, transparent);
-            border-color: color-mix(in srgb, white 22%, transparent);
+
+        /* =========================================================
+           DARK MODE HERO
+        ========================================================= */
+
+        html.dark .hero-portrait::before {
+            background: var(--hero-soft);
+            opacity: 1.5;
         }
 
-        .theme-contact-button:hover {
-            background-color: var(--accent-900);
+        html.dark .hero-photo {
+            filter:
+                drop-shadow(
+                    0 22px 30px
+                    rgba(0, 0, 0, 0.45)
+                );
         }
 
-        /* Theme button */
-        #accentThemeToggle { position: relative; }
+
+        /* =========================================================
+           THEME BUTTON
+        ========================================================= */
+
+        #accentThemeToggle {
+            position: relative;
+        }
 
         #accentThemeToggle .theme-dot {
             width: 7px;
             height: 7px;
+
             border-radius: 9999px;
+
             position: absolute;
+
             bottom: 5px;
             right: 5px;
+
             border: 1px solid currentColor;
+
             background-color: var(--accent-500);
-            transition: background-color 300ms ease;
+
+            transition:
+                background-color 0.3s ease;
         }
 
+
+        /* =========================================================
+           REDUCED MOTION
+        ========================================================= */
+
         @media (prefers-reduced-motion: reduce) {
+
             .metric-reveal {
                 opacity: 1;
                 transform: none;
                 transition: none;
             }
 
-            .portrait-stage {
-                transition: background-color 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+            .hero-photo {
+                transition: none;
             }
+
         }
+
+
+        /* =========================================================
+           RESPONSIVE HERO PORTRAIT
+        ========================================================= */
+
+        @media (max-width: 767px) {
+
+            .hero-portrait {
+                width: 310px;
+                height: 350px;
+            }
+
+            .hero-photo {
+                width: 280px;
+            }
+
+            .hero-line {
+                left: 20px;
+                top: 75px;
+                height: 115px;
+            }
+
+            .hero-line-small {
+                left: 20px;
+                top: 75px;
+                width: 55px;
+            }
+
+            .hero-dots {
+                right: 12px;
+                top: 115px;
+            }
+
+            .hero-bracket {
+                right: 8px;
+                bottom: 65px;
+            }
+
+            .hero-bottom-line {
+                left: 25px;
+                width: 245px;
+                bottom: 22px;
+            }
+
+        }
+
     </style>
+
 </head>
 
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
 
-<!-- Header Navigation -->
-<header class="fixed top-0 left-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 z-50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<body
+    class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans antialiased transition-colors duration-300">
 
-        <a href="#" class="text-xl font-bold tracking-tight text-primary-600 dark:text-primary-500">
-            Fardit<span class="text-slate-800 dark:text-slate-100">.Ahamed</span>
-        </a>
 
-        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
-            <a href="#about" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About</a>
-            <a href="#experience" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Experience</a>
-            <a href="#skills" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Skills</a>
-            <a href="#education" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Education</a>
-            <a href="#contact" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
-        </nav>
+    <!-- =========================================================
+         HEADER NAVIGATION
+    ========================================================= -->
 
-        <div class="flex items-center space-x-2">
+    <header
+        class="fixed top-0 left-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 z-50">
 
-            <!-- Light / Dark Mode -->
-            <button id="themeToggle"
-                class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
-                title="Toggle Light/Dark Mode"
-                aria-label="Toggle Light/Dark Mode">
+        <div
+            class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
-                <i class="fa-solid fa-moon text-lg dark:hidden"></i>
-                <i class="fa-solid fa-sun text-lg hidden dark:block text-amber-400"></i>
-            </button>
 
-            <!-- Accent Color Theme -->
-            <button id="accentThemeToggle"
-                class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative"
-                title="Change Accent Color"
-                aria-label="Change Accent Color">
+            <a href="#"
+                class="text-xl font-bold tracking-tight text-primary-600 dark:text-primary-500">
 
-                <i class="fa-solid fa-palette text-lg"></i>
-                <span class="theme-dot"></span>
+                Fardit<span class="text-slate-800 dark:text-slate-100">
+                    .Ahamed
+                </span>
 
-            </button>
+            </a>
 
-            <!-- Get In Touch Button -->
-            <a href="#contact"
-                class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all shadow-primary-500/20">
-                Get in Touch
+
+            <nav
+                class="hidden md:flex items-center space-x-8 text-sm font-medium">
+
+                <a href="#about"
+                    class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    About
+                </a>
+
+                <a href="#experience"
+                    class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    Experience
+                </a>
+
+                <a href="#skills"
+                    class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    Skills
+                </a>
+
+                <a href="#education"
+                    class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    Education
+                </a>
+
+                <a href="#contact"
+                    class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <div class="flex items-center space-x-2">
+
+
+                <!-- Light / Dark Mode -->
+
+                <button id="themeToggle"
+                    class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+                    title="Toggle Light/Dark Mode"
+                    aria-label="Toggle Light/Dark Mode">
+
+                    <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+
+                    <i
+                        class="fa-solid fa-sun text-lg hidden dark:block text-amber-400">
+                    </i>
+
+                </button>
+
+
+                <!-- Accent Color -->
+
+                <button id="accentThemeToggle"
+                    class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative"
+                    title="Change Accent Color"
+                    aria-label="Change Accent Color">
+
+                    <i class="fa-solid fa-palette text-lg"></i>
+
+                    <span class="theme-dot"></span>
+
+                </button>
+
+
+                <!-- Get In Touch -->
+
+                <a href="#contact"
+                    class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all shadow-primary-500/20">
+
+                    Get in Touch
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================= -->
+
+    <section
+        class="pt-32 pb-20 md:pt-40 md:pb-28 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div
+            class="flex flex-col md:flex-row items-center justify-between gap-12">
+
+
+            <!-- HERO TEXT -->
+
+            <div
+                class="flex-1 text-center md:text-left space-y-6">
+
+
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-950/50 border border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-300 text-xs font-semibold uppercase tracking-wider">
+
+                    <span
+                        class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse">
+                    </span>
+
+                    Available for Key Roles
+
+                </div>
+
+
+                <h1
+                    class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+
+                    Fardit Ahamed
+
+                </h1>
+
+
+                <p
+                    class="text-xl sm:text-2xl font-semibold text-primary-600 dark:text-primary-400">
+
+                    Application Engineer | Solution Analyst | Product & Operations
+
+                </p>
+
+
+                <p
+                    class="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
+
+                    Tech & Business professional specializing in Card Management Systems (CMS), application support, process automation, and solution analysis for top-tier banking clients.
+
+                </p>
+
+
+                <!-- CONTACT -->
+
+                <div
+                    class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-sm text-slate-600 dark:text-slate-400">
+
+
+                    <a href="mailto:shawkot101@gmail.com"
+                        class="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+
+                        <i class="fa-solid fa-envelope text-primary-500"></i>
+
+                        shawkot101@gmail.com
+
+                    </a>
+
+
+                    <a href="tel:01766957937"
+                        class="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+
+                        <i class="fa-solid fa-phone text-primary-500"></i>
+
+                        +880 1766 957937
+
+                    </a>
+
+
+                    <span class="flex items-center gap-2">
+
+                        <i class="fa-solid fa-location-dot text-primary-500"></i>
+
+                        Dhaka, Bangladesh
+
+                    </span>
+
+                </div>
+
+
+                <!-- ACTION BUTTONS -->
+
+                <div
+                    class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+
+
+                    <a href="https://linkedin.com/in/farditahamed"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-primary-600 dark:hover:bg-primary-700 rounded-xl transition-all shadow-md">
+
+                        <i class="fa-brands fa-linkedin text-lg"></i>
+
+                        LinkedIn Profile
+
+                    </a>
+
+
+                    <a href="#contact"
+                        class="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all shadow-sm">
+
+                        <i class="fa-solid fa-paper-plane text-primary-500"></i>
+
+                        Get In Touch
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================================================
+                 BACKGROUNDLESS PORTRAIT
+                 
+                 IMPORTANT:
+                 No image container.
+                 No border.
+                 No box.
+                 Decorations are independent from the image.
+            ====================================================== -->
+
+            <div class="hero-portrait">
+
+
+                <!-- Decorative elements -->
+
+                <div class="hero-line"></div>
+
+                <div class="hero-line-small"></div>
+
+                <div class="hero-dots"></div>
+
+                <div class="hero-bracket"></div>
+
+                <div class="hero-bottom-line"></div>
+
+
+                <!-- ACTUAL PHOTO -->
+
+                <img
+                    src="Fardit Ahamed.jpg"
+                    alt="Fardit Ahamed"
+                    class="hero-photo"
+                    onerror="this.src='https://ui-avatars.com/api/?name=Fardit+Ahamed&background=0284c7&color=fff&size=256'">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         METRICS
+    ========================================================= -->
+
+    <section id="metrics"
+        class="bg-white dark:bg-slate-800/50 border-y border-slate-200 dark:border-slate-800 py-10">
+
+        <div
+            class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+
+
+            <div class="p-4">
+
+                <p id="clientsCount"
+                    class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
+
+                    0+
+
+                </p>
+
+                <p
+                    class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
+
+                    Banking Clients Supported
+
+                </p>
+
+            </div>
+
+
+            <div class="p-4">
+
+                <p id="experienceCount"
+                    class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
+
+                    0+ Years
+
+                </p>
+
+                <p
+                    class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
+
+                    Tech & Operations Experience
+
+                </p>
+
+            </div>
+
+
+            <div class="p-4 metric-reveal metric-delay-1">
+
+                <p
+                    class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
+
+                    EMBA OSL
+
+                </p>
+
+                <p
+                    class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
+
+                    University of Dhaka
+
+                </p>
+
+            </div>
+
+
+            <div class="p-4 metric-reveal metric-delay-2">
+
+                <p
+                    class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
+
+                    B.Sc. CSE
+
+                </p>
+
+                <p
+                    class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
+
+                    American International University-Bangladesh
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         ABOUT
+    ========================================================= -->
+
+    <section id="about"
+        class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+
+        <div
+            class="max-w-3xl mx-auto text-center space-y-4 mb-12">
+
+            <h2
+                class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+
+                About Me
+
+            </h2>
+
+            <div
+                class="w-16 h-1 bg-primary-600 mx-auto rounded-full">
+            </div>
+
+        </div>
+
+
+        <div
+            class="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-10 shadow-xl border border-slate-200/60 dark:border-slate-700/60">
+
+            <p
+                class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
+
+                Technology and business professional with 2+ years of experience in application support, solution analysis, product operations, and banking technology. Experienced in supporting a SaaS-based Card Management System used across approximately 36 banking clients, with hands-on responsibility for CMS administration, card and account operations, user/access management, requirements analysis, UAT/testing, data validation, documentation, audit support, and cross-functional coordination. Currently pursuing an Executive MBA at the University of Dhaka, with a career focus on business analysis, product/operations, and technology-driven business solutions.
+
+            </p>
+
+        </div>
+
+
+        <div class="flex justify-center mt-8">
+
+            <a href="Fardit_Ahamed_CV.pdf"
+                download="Fardit-Ahamed-CV.pdf"
+                class="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-xl shadow-md hover:shadow-lg transition-all">
+
+                <i class="fa-solid fa-download"></i>
+
+                Download CV
+
             </a>
 
         </div>
-    </div>
-</header>
+
+    </section>
 
 
-<!-- Hero Section -->
-<section class="pt-32 pb-20 md:pt-40 md:pb-28 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+    <!-- =========================================================
+         EXPERIENCE
+    ========================================================= -->
 
-        <div class="flex-1 text-center md:text-left space-y-6">
+    <section id="experience"
+        class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
 
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-950/50 border border-primary-200 dark:border-primary-800 text-primary-700 dark:text-primary-300 text-xs font-semibold uppercase tracking-wider">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                Available for Key Roles
-            </div>
-
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-                Fardit Ahamed
-            </h1>
-
-            <p class="text-xl sm:text-2xl font-semibold text-primary-600 dark:text-primary-400">
-                Application Engineer | Solution Analyst | Product & Operations
-            </p>
-
-            <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">
-                Tech & Business professional specializing in Card Management Systems (CMS), application support, process automation, and solution analysis for top-tier banking clients.
-            </p>
+        <div
+            class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
 
-            <!-- Contact Badges -->
-            <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-sm text-slate-600 dark:text-slate-400">
+            <div
+                class="max-w-3xl mx-auto text-center space-y-4 mb-16">
 
-                <a href="mailto:shawkot101@gmail.com"
-                    class="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <h2
+                    class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
 
-                    <i class="fa-solid fa-envelope text-primary-500"></i>
-                    shawkot101@gmail.com
+                    Work Experience
 
-                </a>
+                </h2>
 
-                <a href="tel:01766957937"
-                    class="flex items-center gap-2 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-
-                    <i class="fa-solid fa-phone text-primary-500"></i>
-                    +880 1766 957937
-
-                </a>
-
-                <span class="flex items-center gap-2">
-                    <i class="fa-solid fa-location-dot text-primary-500"></i>
-                    Dhaka, Bangladesh
-                </span>
+                <div
+                    class="w-16 h-1 bg-primary-600 mx-auto rounded-full">
+                </div>
 
             </div>
 
 
-            <!-- Action Buttons -->
-            <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+            <div
+                class="relative border-l-2 border-primary-500/30 ml-4 md:ml-32 space-y-12">
+
+
+                <!-- IT Consultants PLC -->
+
+                <div
+                    class="relative pl-6 md:pl-10 group">
+
+                    <div
+                        class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primary-600 ring-4 ring-white dark:ring-slate-900">
+                    </div>
+
+
+                    <div
+                        class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
+
+
+                        <div
+                            class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+
+                            <div>
+
+                                <h3
+                                    class="text-xl font-bold text-slate-900 dark:text-white">
+
+                                    Application Engineer
+
+                                </h3>
+
+                                <p
+                                    class="text-primary-600 dark:text-primary-400 font-semibold">
+
+                                    IT Consultants PLC
+
+                                </p>
+
+                            </div>
+
+
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
+
+                                Oct 2024 – Present
+
+                            </span>
+
+                        </div>
+
+
+                        <ul
+                            class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
+
+                            <li>
+                                Provide application and solution support for a SaaS-based Card Management System (CMS) serving ~36 banking clients.
+                            </li>
+
+                            <li>
+                                Manage CMS administration, user access provisioning, password resets, account unlocking, and role/access support.
+                            </li>
+
+                            <li>
+                                Perform card and account operations including batch card creation, modification, deletion, and account setup/maintenance.
+                            </li>
+
+                            <li>
+                                Configure operational entities (branches/stations) and coordinate batch requests with online/operations teams.
+                            </li>
+
+                            <li>
+                                Analyze business and operational requirements, investigate issues, and provide practical solutions to banking teams.
+                            </li>
+
+                            <li>
+                                Coordinate with TOS, R&D/development, database, CMS checking, and online teams for system changes and releases.
+                            </li>
+
+                            <li>
+                                Manage SMS, Card Mailer, and e-Statement change requests through requirement collection, tracking, and validation.
+                            </li>
+
+                            <li>
+                                Support UAT, testing, data validation, documentation, reporting, and process improvement activities.
+                            </li>
+
+                            <li>
+                                Participated in two internal audit exercises, supporting CMS-related information gathering, verification, and documentation.
+                            </li>
+
+                            <li>
+                                Develop internal tracking/reporting solutions and automate recurring operational activities using Google Sheets & Google Apps Script.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SMANS -->
+
+                <div
+                    class="relative pl-6 md:pl-10 group">
+
+                    <div
+                        class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-slate-900">
+                    </div>
+
+
+                    <div
+                        class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
+
+
+                        <div
+                            class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+
+                            <div>
+
+                                <h3
+                                    class="text-xl font-bold text-slate-900 dark:text-white">
+
+                                    IELTS Trainer
+
+                                </h3>
+
+                                <p
+                                    class="text-primary-600 dark:text-primary-400 font-semibold">
+
+                                    SMANS School of English
+
+                                </p>
+
+                            </div>
+
+
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
+
+                                Jul 2023 – Jul 2024
+
+                            </span>
+
+                        </div>
+
+
+                        <ul
+                            class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
+
+                            <li>
+                                Conducted IELTS training in Reading, Listening, Writing, and Speaking modules.
+                            </li>
+
+                            <li>
+                                Guided learners on question-solving strategies, English development, and examination techniques.
+                            </li>
+
+                            <li>
+                                Assessed performance, identified weaknesses, provided individual feedback, and prepared practice materials.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SR Dream IT -->
+
+                <div
+                    class="relative pl-6 md:pl-10 group">
+
+                    <div
+                        class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-slate-900">
+                    </div>
+
+
+                    <div
+                        class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
+
+
+                        <div
+                            class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+
+                            <div>
+
+                                <h3
+                                    class="text-xl font-bold text-slate-900 dark:text-white">
+
+                                    Online Support Specialist
+
+                                </h3>
+
+                                <p
+                                    class="text-primary-600 dark:text-primary-400 font-semibold">
+
+                                    SR Dream IT
+
+                                </p>
+
+                            </div>
+
+
+                            <span
+                                class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
+
+                                Jul 2022 – Oct 2022
+
+                            </span>
+
+                        </div>
+
+
+                        <ul
+                            class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
+
+                            <li>
+                                Provided online customer and operational support through digital communication channels.
+                            </li>
+
+                            <li>
+                                Assisted with issue resolution, information handling, and day-to-day support activities.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         SKILLS
+    ========================================================= -->
+
+    <section id="skills"
+        class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+
+        <div
+            class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+
+            <h2
+                class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+
+                Core Skills & Competencies
+
+            </h2>
+
+            <div
+                class="w-16 h-1 bg-primary-600 mx-auto rounded-full">
+            </div>
+
+        </div>
+
+
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+            <!-- Skill 1 -->
+
+            <div
+                class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+
+                <div
+                    class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+
+                    <i class="fa-solid fa-credit-card"></i>
+
+                </div>
+
+                <h3
+                    class="text-lg font-bold text-slate-900 dark:text-white mb-2">
+
+                    Banking & CMS
+
+                </h3>
+
+                <p
+                    class="text-sm text-slate-600 dark:text-slate-400">
+
+                    Card Management Systems (CMS), Batch Card Creation, Account Maintenance, Station Configuration.
+
+                </p>
+
+            </div>
+
+
+            <!-- Skill 2 -->
+
+            <div
+                class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+
+                <div
+                    class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                </div>
+
+                <h3
+                    class="text-lg font-bold text-slate-900 dark:text-white mb-2">
+
+                    Analysis & Solution
+
+                </h3>
+
+                <p
+                    class="text-sm text-slate-600 dark:text-slate-400">
+
+                    Business & Requirement Analysis, Solution Analysis, Root Cause Investigation, Technical Guidance.
+
+                </p>
+
+            </div>
+
+
+            <!-- Skill 3 -->
+
+            <div
+                class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+
+                <div
+                    class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+
+                    <i class="fa-solid fa-vial"></i>
+
+                </div>
+
+                <h3
+                    class="text-lg font-bold text-slate-900 dark:text-white mb-2">
+
+                    QA & Testing
+
+                </h3>
+
+                <p
+                    class="text-sm text-slate-600 dark:text-slate-400">
+
+                    User Acceptance Testing (UAT), Data Validation, Release Activities, Cross-Team Coordination.
+
+                </p>
+
+            </div>
+
+
+            <!-- Skill 4 -->
+
+            <div
+                class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+
+                <div
+                    class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+
+                    <i class="fa-solid fa-gears"></i>
+
+                </div>
+
+                <h3
+                    class="text-lg font-bold text-slate-900 dark:text-white mb-2">
+
+                    Automation & Tools
+
+                </h3>
+
+                <p
+                    class="text-sm text-slate-600 dark:text-slate-400">
+
+                    Google Sheets, Google Apps Script, SQL Database Queries, Process Automation.
+
+                </p>
+
+            </div>
+
+
+            <!-- Skill 5 -->
+
+            <div
+                class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+
+                <div
+                    class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                </div>
+
+                <h3
+                    class="text-lg font-bold text-slate-900 dark:text-white mb-2">
+
+                    Operations & Admin
+
+                </h3>
+
+                <p
+                    class="text-sm text-slate-600 dark:text-slate-400">
+
+                    User Access Provisioning, Role Management, Audit Compliance Support, Documentation.
+
+                </p>
+
+            </div>
+
+
+            <!-- Skill 6 -->
+
+            <div
+                class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
+
+                <div
+                    class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
+
+                    <i class="fa-solid fa-box"></i>
+
+                </div>
+
+                <h3
+                    class="text-lg font-bold text-slate-900 dark:text-white mb-2">
+
+                    Product Operations
+
+                </h3>
+
+                <p
+                    class="text-sm text-slate-600 dark:text-slate-400">
+
+                    Product Lifecycle Management, Feature Requests, SMS/Card Mailer/e-Statement Change Operations.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         EDUCATION
+    ========================================================= -->
+
+    <section id="education"
+        class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
+
+        <div
+            class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+
+            <div
+                class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+
+                <h2
+                    class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+
+                    Education & Certifications
+
+                </h2>
+
+                <div
+                    class="w-16 h-1 bg-primary-600 mx-auto rounded-full">
+                </div>
+
+            </div>
+
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+
+                <!-- Education -->
+
+                <div class="space-y-6">
+
+
+                    <h3
+                        class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+
+                        <i class="fa-solid fa-graduation-cap text-primary-600"></i>
+
+                        Education
+
+                    </h3>
+
+
+                    <div
+                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-2">
+
+                        <span
+                            class="text-xs font-semibold text-primary-600 dark:text-primary-400">
+
+                            2025 – Present
+
+                        </span>
+
+                        <h4
+                            class="text-lg font-bold text-slate-900 dark:text-white">
+
+                            Executive MBA
+
+                        </h4>
+
+                        <p
+                            class="text-sm text-slate-600 dark:text-slate-400">
+
+                            Organizational Strategy & Leadership
+
+                        </p>
+
+                        <p
+                            class="text-xs text-slate-500 font-medium">
+
+                            University of Dhaka
+
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-2">
+
+                        <span
+                            class="text-xs font-semibold text-primary-600 dark:text-primary-400">
+
+                            2018 – 2021
+
+                        </span>
+
+                        <h4
+                            class="text-lg font-bold text-slate-900 dark:text-white">
+
+                            Bachelor of Science
+
+                        </h4>
+
+                        <p
+                            class="text-sm text-slate-600 dark:text-slate-400">
+
+                            Computer Science & Engineering
+
+                        </p>
+
+                        <p
+                            class="text-xs text-slate-500 font-medium">
+
+                            American International University-Bangladesh
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Professional Development -->
+
+                <div class="space-y-6">
+
+
+                    <h3
+                        class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+
+                        <i class="fa-solid fa-certificate text-primary-600"></i>
+
+                        Professional Development
+
+                    </h3>
+
+
+                    <div
+                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-4">
+
+
+                        <div>
+
+                            <h4
+                                class="text-lg font-bold text-slate-900 dark:text-white">
+
+                                Digital Product Management
+
+                            </h4>
+
+                            <p
+                                class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+
+                                Interactive Cares
+
+                            </p>
+
+                        </div>
+
+
+                        <a href="digital-product-management.jpg"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 w-fit px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all">
+
+                            <i class="fa-solid fa-certificate"></i>
+
+                            View Certificate
+
+                            <i
+                                class="fa-solid fa-arrow-up-right-from-square text-xs">
+                            </i>
+
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-4">
+
+
+                        <div>
+
+                            <h4
+                                class="text-lg font-bold text-slate-900 dark:text-white">
+
+                                Basics of Product Management
+
+                            </h4>
+
+                            <p
+                                class="text-sm text-slate-600 dark:text-slate-400 mt-1">
+
+                                Ostad
+
+                            </p>
+
+                        </div>
+
+
+                        <a href="basics-of-product-management.jpg"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 w-fit px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all">
+
+                            <i class="fa-solid fa-certificate"></i>
+
+                            View Certificate
+
+                            <i
+                                class="fa-solid fa-arrow-up-right-from-square text-xs">
+                            </i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         CONTACT
+    ========================================================= -->
+
+    <section id="contact"
+        class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+
+        <div
+            class="max-w-6xl mx-auto bg-gradient-to-br from-primary-600 to-indigo-700 text-white rounded-3xl p-8 sm:p-12 shadow-2xl space-y-6">
+
+
+            <h2
+                class="text-3xl sm:text-4xl font-extrabold">
+
+                Let's Connect & Work Together
+
+            </h2>
+
+
+            <p
+                class="text-primary-100 text-lg">
+
+                Open for opportunities in Application Support, Solution Analysis, and Product Operations.
+
+            </p>
+
+
+            <div
+                class="flex flex-wrap items-center justify-center gap-4 pt-4">
+
+
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shawkot101@gmail.com&su=Inquiry%20from%20Portfolio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="px-6 py-3 bg-white text-primary-700 font-bold rounded-xl shadow-lg hover:bg-slate-100 transition-all flex items-center gap-2">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    Send Email Direct
+
+                </a>
+
 
                 <a href="https://linkedin.com/in/farditahamed"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-slate-900 hover:bg-slate-800 dark:bg-primary-600 dark:hover:bg-primary-700 rounded-xl transition-all shadow-md">
+                    class="px-6 py-3 bg-primary-800/60 text-white font-bold rounded-xl border border-white/20 hover:bg-primary-800 transition-all flex items-center gap-2">
 
-                    <i class="fa-brands fa-linkedin text-lg"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+
                     LinkedIn Profile
 
                 </a>
 
-                <a href="#contact"
-                    class="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl transition-all shadow-sm">
-
-                    <i class="fa-solid fa-paper-plane text-primary-500"></i>
-                    Get In Touch
-
-                </a>
-
             </div>
 
         </div>
 
-
-        <!-- Avatar / Theme-dependent Portrait -->
-        <div class="relative group shrink-0">
-
-            <div class="portrait-stage">
-                <canvas id="portraitCanvas" aria-label="Fardit Ahamed"></canvas>
-            </div>
-
-            <!-- Original photo is kept unchanged. JavaScript only removes the connected white background. -->
-            <img id="portraitSource"
-                src="Fardit Ahamed.jpg"
-                alt="Fardit Ahamed"
-                class="hidden"
-                crossorigin="anonymous"
-                onerror="handlePortraitError()">
-
-        </div>
-
-    </div>
-
-</section>
+    </section>
 
 
-<!-- Metrics Highlight Section -->
-<section id="metrics" class="bg-white dark:bg-slate-800/50 border-y border-slate-200 dark:border-slate-800 py-10">
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
 
-        <div class="p-4">
+    <footer
+        class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-500">
 
-            <p id="clientsCount"
-                class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
-                0+
-            </p>
-
-            <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
-                Banking Clients Supported
-            </p>
-
-        </div>
-
-
-        <div class="p-4">
-
-            <p id="experienceCount"
-                class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
-                0+ Years
-            </p>
-
-            <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
-                Tech & Operations Experience
-            </p>
-
-        </div>
-
-
-        <div class="p-4 metric-reveal metric-delay-1">
-
-            <p class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
-                EMBA OSL
-            </p>
-
-            <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
-                University of Dhaka
-            </p>
-
-        </div>
-
-
-        <div class="p-4 metric-reveal metric-delay-2">
-
-            <p class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400">
-                B.Sc. CSE
-            </p>
-
-            <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">
-                American International University-Bangladesh
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- About Section -->
-<section id="about" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-    <div class="max-w-3xl mx-auto text-center space-y-4 mb-12">
-
-        <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-            About Me
-        </h2>
-
-        <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
-
-    </div>
-
-
-    <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 sm:p-10 shadow-xl border border-slate-200/60 dark:border-slate-700/60">
-
-        <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-
-            Technology and business professional with 2+ years of experience in application support, solution analysis, product operations, and banking technology. Experienced in supporting a SaaS-based Card Management System used across approximately 36 banking clients, with hands-on responsibility for CMS administration, card and account operations, user/access management, requirements analysis, UAT/testing, data validation, documentation, audit support, and cross-functional coordination. Currently pursuing an Executive MBA at the University of Dhaka, with a career focus on business analysis, product/operations, and technology-driven business solutions.
-
+        <p>
+            © <span id="year"></span> Fardit Ahamed. All rights reserved.
         </p>
 
-    </div>
+    </footer>
 
 
-    <!-- Download CV Button -->
-    <div class="flex justify-center mt-8">
 
-        <a href="Fardit_Ahamed_CV.pdf"
-            download="Fardit-Ahamed-CV.pdf"
-            class="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-xl shadow-md hover:shadow-lg transition-all">
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================= -->
 
-            <i class="fa-solid fa-download"></i>
-            Download CV
+    <script>
 
-        </a>
 
-    </div>
+        /* =========================================================
+           YEAR
+        ========================================================= */
 
-</section>
+        document.getElementById('year').textContent =
+            new Date().getFullYear();
 
 
-<!-- Experience Section -->
-<section id="experience" class="py-20 theme-soft-section">
 
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        /* =========================================================
+           METRICS ANIMATION
+        ========================================================= */
 
-        <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+        const metricsSection =
+            document.getElementById('metrics');
 
-            <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-                Work Experience
-            </h2>
+        const clientsCount =
+            document.getElementById('clientsCount');
 
-            <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
+        const experienceCount =
+            document.getElementById('experienceCount');
 
-        </div>
+        const metricRevealItems =
+            document.querySelectorAll(
+                '#metrics .metric-reveal'
+            );
 
 
-        <div class="relative border-l-2 border-primary-500/30 ml-4 md:ml-32 space-y-12">
+        function animateCounter(
+            element,
+            target,
+            suffix,
+            duration = 1500
+        ) {
 
-            <!-- IT Consultants PLC -->
-            <div class="relative pl-6 md:pl-10 group">
+            const startTime = performance.now();
 
-                <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primary-600 ring-4 ring-white dark:ring-slate-900"></div>
 
-                <div class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
+            function update(timestamp) {
 
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                const progress =
+                    Math.min(
+                        (timestamp - startTime) /
+                        duration,
+                        1
+                    );
 
-                        <div>
 
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">
-                                Application Engineer
-                            </h3>
+                const easedProgress =
+                    1 - Math.pow(
+                        1 - progress,
+                        3
+                    );
 
-                            <p class="text-primary-600 dark:text-primary-400 font-semibold">
-                                IT Consultants PLC
-                            </p>
 
-                        </div>
+                const currentValue =
+                    Math.floor(
+                        easedProgress * target
+                    );
 
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
-                            Oct 2024 – Present
-                        </span>
 
-                    </div>
+                element.textContent =
+                    `${currentValue}${suffix}`;
 
 
-                    <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
+                if (progress < 1) {
 
-                        <li>Provide application and solution support for a SaaS-based Card Management System (CMS) serving ~36 banking clients.</li>
+                    requestAnimationFrame(update);
 
-                        <li>Manage CMS administration, user access provisioning, password resets, account unlocking, and role/access support.</li>
+                } else {
 
-                        <li>Perform card and account operations including batch card creation, modification, deletion, and account setup/maintenance.</li>
+                    element.textContent =
+                        `${target}${suffix}`;
 
-                        <li>Configure operational entities (branches/stations) and coordinate batch requests with online/operations teams.</li>
-
-                        <li>Analyze business and operational requirements, investigate issues, and provide practical solutions to banking teams.</li>
-
-                        <li>Coordinate with TOS, R&D/development, database, CMS checking, and online teams for system changes and releases.</li>
-
-                        <li>Manage SMS, Card Mailer, and e-Statement change requests through requirement collection, tracking, and validation.</li>
-
-                        <li>Support UAT, testing, data validation, documentation, reporting, and process improvement activities.</li>
-
-                        <li>Participated in two internal audit exercises, supporting CMS-related information gathering, verification, and documentation.</li>
-
-                        <li>Develop internal tracking/reporting solutions and automate recurring operational activities using Google Sheets & Google Apps Script.</li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-
-            <!-- SMANS School of English -->
-            <div class="relative pl-6 md:pl-10 group">
-
-                <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-slate-900"></div>
-
-                <div class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
-
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-
-                        <div>
-
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">
-                                IELTS Trainer
-                            </h3>
-
-                            <p class="text-primary-600 dark:text-primary-400 font-semibold">
-                                SMANS School of English
-                            </p>
-
-                        </div>
-
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
-                            Jul 2023 – Jul 2024
-                        </span>
-
-                    </div>
-
-
-                    <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
-
-                        <li>Conducted IELTS training in Reading, Listening, Writing, and Speaking modules.</li>
-
-                        <li>Guided learners on question-solving strategies, English development, and examination techniques.</li>
-
-                        <li>Assessed performance, identified weaknesses, provided individual feedback, and prepared practice materials.</li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-
-            <!-- SR Dream IT -->
-            <div class="relative pl-6 md:pl-10 group">
-
-                <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-white dark:ring-slate-900"></div>
-
-                <div class="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-md border border-slate-200/60 dark:border-slate-700/60 space-y-4">
-
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-
-                        <div>
-
-                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">
-                                Online Support Specialist
-                            </h3>
-
-                            <p class="text-primary-600 dark:text-primary-400 font-semibold">
-                                SR Dream IT
-                            </p>
-
-                        </div>
-
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 w-fit">
-                            Jul 2022 – Oct 2022
-                        </span>
-
-                    </div>
-
-
-                    <ul class="space-y-2 text-slate-600 dark:text-slate-300 text-sm sm:text-base list-disc list-inside leading-relaxed">
-
-                        <li>Provided online customer and operational support through digital communication channels.</li>
-
-                        <li>Assisted with issue resolution, information handling, and day-to-day support activities.</li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- Skills Section -->
-<section id="skills" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-    <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
-
-        <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-            Core Skills & Competencies
-        </h2>
-
-        <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
-
-    </div>
-
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Skill Card 1 -->
-        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
-
-            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
-                <i class="fa-solid fa-credit-card"></i>
-            </div>
-
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">
-                Banking & CMS
-            </h3>
-
-            <p class="text-sm text-slate-600 dark:text-slate-400">
-                Card Management Systems (CMS), Batch Card Creation, Account Maintenance, Station Configuration.
-            </p>
-
-        </div>
-
-
-        <!-- Skill Card 2 -->
-        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
-
-            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
-                <i class="fa-solid fa-chart-line"></i>
-            </div>
-
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">
-                Analysis & Solution
-            </h3>
-
-            <p class="text-sm text-slate-600 dark:text-slate-400">
-                Business & Requirement Analysis, Solution Analysis, Root Cause Investigation, Technical Guidance.
-            </p>
-
-        </div>
-
-
-        <!-- Skill Card 3 -->
-        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
-
-            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
-                <i class="fa-solid fa-vial"></i>
-            </div>
-
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">
-                QA & Testing
-            </h3>
-
-            <p class="text-sm text-slate-600 dark:text-slate-400">
-                User Acceptance Testing (UAT), Data Validation, Release Activities, Cross-Team Coordination.
-            </p>
-
-        </div>
-
-
-        <!-- Skill Card 4 -->
-        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
-
-            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
-                <i class="fa-solid fa-gears"></i>
-            </div>
-
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">
-                Automation & Tools
-            </h3>
-
-            <p class="text-sm text-slate-600 dark:text-slate-400">
-                Google Sheets, Google Apps Script, SQL Database Queries, Process Automation.
-            </p>
-
-        </div>
-
-
-        <!-- Skill Card 5 -->
-        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
-
-            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
-                <i class="fa-solid fa-user-shield"></i>
-            </div>
-
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">
-                Operations & Admin
-            </h3>
-
-            <p class="text-sm text-slate-600 dark:text-slate-400">
-                User Access Provisioning, Role Management, Audit Compliance Support, Documentation.
-            </p>
-
-        </div>
-
-
-        <!-- Skill Card 6 -->
-        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-md hover:shadow-lg transition-shadow">
-
-            <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-950 flex items-center justify-center text-primary-600 dark:text-primary-400 text-xl font-bold mb-4">
-                <i class="fa-solid fa-box"></i>
-            </div>
-
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">
-                Product Operations
-            </h3>
-
-            <p class="text-sm text-slate-600 dark:text-slate-400">
-                Product Lifecycle Management, Feature Requests, SMS/Card Mailer/e-Statement Change Operations.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- Education & Training -->
-<section id="education" class="py-20 theme-soft-section">
-
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
-
-            <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-                Education & Certifications
-            </h2>
-
-            <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
-
-        </div>
-
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-
-            <!-- Education -->
-            <div class="space-y-6">
-
-                <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-
-                    <i class="fa-solid fa-graduation-cap text-primary-600"></i>
-                    Education
-
-                </h3>
-
-
-                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-2">
-
-                    <span class="text-xs font-semibold text-primary-600 dark:text-primary-400">
-                        2025 – Present
-                    </span>
-
-                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">
-                        Executive MBA
-                    </h4>
-
-                    <p class="text-sm text-slate-600 dark:text-slate-400">
-                        Organizational Strategy & Leadership
-                    </p>
-
-                    <p class="text-xs text-slate-500 font-medium">
-                        University of Dhaka
-                    </p>
-
-                </div>
-
-
-                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-2">
-
-                    <span class="text-xs font-semibold text-primary-600 dark:text-primary-400">
-                        2018 – 2021
-                    </span>
-
-                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">
-                        Bachelor of Science
-                    </h4>
-
-                    <p class="text-sm text-slate-600 dark:text-slate-400">
-                        Computer Science & Engineering
-                    </p>
-
-                    <p class="text-xs text-slate-500 font-medium">
-                        American International University-Bangladesh
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- Professional Development / Certificates -->
-            <div class="space-y-6">
-
-                <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-
-                    <i class="fa-solid fa-certificate text-primary-600"></i>
-                    Professional Development
-
-                </h3>
-
-
-                <!-- Digital Product Management -->
-                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-4">
-
-                    <div>
-
-                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">
-                            Digital Product Management
-                        </h4>
-
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                            Interactive Cares
-                        </p>
-
-                    </div>
-
-
-                    <a href="digital-product-management.jpg"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="inline-flex items-center gap-2 w-fit px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all">
-
-                        <i class="fa-solid fa-certificate"></i>
-                        View Certificate
-                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-
-                    </a>
-
-                </div>
-
-
-                <!-- Basics of Product Management -->
-                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm space-y-4">
-
-                    <div>
-
-                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">
-                            Basics of Product Management
-                        </h4>
-
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                            Ostad
-                        </p>
-
-                    </div>
-
-
-                    <a href="basics-of-product-management.jpg"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="inline-flex items-center gap-2 w-fit px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all">
-
-                        <i class="fa-solid fa-certificate"></i>
-                        View Certificate
-                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- Contact Section -->
-<section id="contact" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
-    <div class="max-w-6xl mx-auto theme-contact text-white rounded-3xl p-8 sm:p-12 shadow-2xl space-y-6 transition-colors duration-300">
-
-        <h2 class="text-3xl sm:text-4xl font-extrabold">
-            Let's Connect & Work Together
-        </h2>
-
-        <p class="text-primary-100 text-lg">
-            Open for opportunities in Application Support, Solution Analysis, and Product Operations.
-        </p>
-
-
-        <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
-
-
-            <!-- FIXED: Direct Gmail Compose Button -->
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shawkot101@gmail.com&su=Inquiry%20from%20Portfolio"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-6 py-3 bg-white text-primary-700 font-bold rounded-xl shadow-lg hover:bg-slate-100 transition-all flex items-center gap-2">
-
-                <i class="fa-solid fa-envelope"></i>
-                Send Email Direct
-
-            </a>
-
-
-            <!-- LinkedIn -->
-            <a href="https://linkedin.com/in/farditahamed"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-6 py-3 theme-contact-button text-white font-bold rounded-xl border hover:bg-primary-800 transition-all flex items-center gap-2">
-
-                <i class="fa-brands fa-linkedin"></i>
-                LinkedIn Profile
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- Footer -->
-<footer class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-sm text-slate-500">
-
-    <p>
-        © <span id="year"></span> Fardit Ahamed. All rights reserved.
-    </p>
-
-</footer>
-
-
-<script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    /* =========================================================
-       METRICS-ONLY ANIMATION
-    ========================================================= */
-    const metricsSection = document.getElementById('metrics');
-    const clientsCount = document.getElementById('clientsCount');
-    const experienceCount = document.getElementById('experienceCount');
-    const metricRevealItems = document.querySelectorAll('#metrics .metric-reveal');
-
-    function animateCounter(element, target, suffix, duration = 1500) {
-        const startTime = performance.now();
-
-        function update(timestamp) {
-            const progress = Math.min((timestamp - startTime) / duration, 1);
-            const easedProgress = 1 - Math.pow(1 - progress, 3);
-            const currentValue = Math.floor(easedProgress * target);
-
-            element.textContent = `${currentValue}${suffix}`;
-
-            if (progress < 1) {
-                requestAnimationFrame(update);
-            } else {
-                element.textContent = `${target}${suffix}`;
-            }
-        }
-
-        requestAnimationFrame(update);
-    }
-
-    function startMetricsAnimation() {
-        if (clientsCount && experienceCount) {
-            animateCounter(clientsCount, 36, '+');
-            animateCounter(experienceCount, 2, '+ Years');
-        }
-
-        metricRevealItems.forEach(item => {
-            item.classList.add('metric-visible');
-        });
-    }
-
-    if (metricsSection) {
-        if ('IntersectionObserver' in window) {
-            const metricsObserver = new IntersectionObserver((entries, observer) => {
-                if (entries.some(entry => entry.isIntersecting)) {
-                    startMetricsAnimation();
-                    observer.unobserve(metricsSection);
                 }
-            }, { threshold: 0.2 });
 
-            metricsObserver.observe(metricsSection);
-        } else {
-            startMetricsAnimation();
-        }
-    }
-
-
-    /* =========================================================
-       LIGHT / DARK MODE
-    ========================================================= */
-    const themeToggleBtn = document.getElementById('themeToggle');
-
-    if (
-        localStorage.getItem('color-theme') === 'dark' ||
-        (
-            !('color-theme' in localStorage) &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches
-        )
-    ) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
-
-    themeToggleBtn.addEventListener('click', function () {
-        if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('color-theme', 'light');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('color-theme', 'dark');
-        }
-    });
-
-
-    /* =========================================================
-       ACCENT COLOR THEME SWITCHER
-       Purple -> Red -> Blue -> Purple
-    ========================================================= */
-    const accentThemeToggle = document.getElementById('accentThemeToggle');
-    const accentThemes = ['purple', 'red', 'blue'];
-
-    let savedAccentTheme = localStorage.getItem('accent-theme') || 'purple';
-
-    if (!accentThemes.includes(savedAccentTheme)) {
-        savedAccentTheme = 'purple';
-    }
-
-    function applyAccentTheme(theme) {
-        if (theme === 'purple') {
-            document.documentElement.removeAttribute('data-accent');
-        } else {
-            document.documentElement.setAttribute('data-accent', theme);
-        }
-
-        localStorage.setItem('accent-theme', theme);
-    }
-
-    applyAccentTheme(savedAccentTheme);
-
-    accentThemeToggle.addEventListener('click', function () {
-        const currentIndex = accentThemes.indexOf(savedAccentTheme);
-        const nextIndex = (currentIndex + 1) % accentThemes.length;
-
-        savedAccentTheme = accentThemes[nextIndex];
-        applyAccentTheme(savedAccentTheme);
-    });
-
-
-    /* =========================================================
-       PORTRAIT BACKGROUND REMOVAL
-
-       Important:
-       - Uses the ORIGINAL "Fardit Ahamed.jpg".
-       - Does not replace or regenerate the person.
-       - Only removes the connected white background.
-       - The transparent result is drawn over the CSS theme colour.
-       - White areas inside the subject remain because only pixels
-         connected to the outside edge are removed.
-    ========================================================= */
-    const portraitSource = document.getElementById('portraitSource');
-    const portraitCanvas = document.getElementById('portraitCanvas');
-    const portraitContext = portraitCanvas ? portraitCanvas.getContext('2d', { willReadFrequently: true }) : null;
-
-    function isBackgroundWhite(r, g, b) {
-        const brightness = (r + g + b) / 3;
-        const spread = Math.max(r, g, b) - Math.min(r, g, b);
-
-        // White/near-white neutral background only.
-        return brightness >= 238 && spread <= 18;
-    }
-
-    function processPortrait() {
-        if (!portraitSource || !portraitCanvas || !portraitContext || !portraitSource.naturalWidth) return;
-
-        const width = portraitSource.naturalWidth;
-        const height = portraitSource.naturalHeight;
-
-        portraitCanvas.width = width;
-        portraitCanvas.height = height;
-
-        portraitContext.clearRect(0, 0, width, height);
-        portraitContext.drawImage(portraitSource, 0, 0, width, height);
-
-        const image = portraitContext.getImageData(0, 0, width, height);
-        const data = image.data;
-        const visited = new Uint8Array(width * height);
-        const queue = new Int32Array(width * height);
-        let head = 0;
-        let tail = 0;
-
-        function enqueue(index) {
-            if (visited[index]) return;
-            visited[index] = 1;
-            queue[tail++] = index;
-        }
-
-        // Seed from all four edges. This means only background connected
-        // to the outside is removed, preserving white shirt/collar pixels.
-        for (let x = 0; x < width; x++) {
-            enqueue(x);
-            enqueue((height - 1) * width + x);
-        }
-
-        for (let y = 0; y < height; y++) {
-            enqueue(y * width);
-            enqueue(y * width + (width - 1));
-        }
-
-        const neighbours = [-1, 1, -width, width];
-
-        while (head < tail) {
-            const pixelIndex = queue[head++];
-            const p = pixelIndex * 4;
-
-            const r = data[p];
-            const g = data[p + 1];
-            const b = data[p + 2];
-
-            if (!isBackgroundWhite(r, g, b)) continue;
-
-            // Fully remove connected white background.
-            data[p + 3] = 0;
-
-            const x = pixelIndex % width;
-            const y = Math.floor(pixelIndex / width);
-
-            if (x > 0) enqueue(pixelIndex - 1);
-            if (x < width - 1) enqueue(pixelIndex + 1);
-            if (y > 0) enqueue(pixelIndex - width);
-            if (y < height - 1) enqueue(pixelIndex + width);
-        }
-
-        /*
-           Soften only the white/near-white pixels directly beside the
-           removed background. This reduces a white halo without altering
-           the RGB colour of the foreground subject.
-        */
-        const original = new Uint8ClampedArray(data);
-
-        function hasTransparentNeighbour(pixelIndex) {
-            const x = pixelIndex % width;
-            const y = Math.floor(pixelIndex / width);
-            const candidates = [];
-
-            if (x > 0) candidates.push(pixelIndex - 1);
-            if (x < width - 1) candidates.push(pixelIndex + 1);
-            if (y > 0) candidates.push(pixelIndex - width);
-            if (y < height - 1) candidates.push(pixelIndex + width);
-
-            for (const n of candidates) {
-                if (original[n * 4 + 3] === 0) return true;
             }
 
-            return false;
+
+            requestAnimationFrame(update);
+
         }
 
-        for (let i = 0; i < width * height; i++) {
-            const p = i * 4;
-            if (original[p + 3] === 0) continue;
 
-            const r = original[p];
-            const g = original[p + 1];
-            const b = original[p + 2];
+        function startMetricsAnimation() {
 
-            if (hasTransparentNeighbour(i) && isBackgroundWhite(r, g, b)) {
-                const brightness = (r + g + b) / 3;
-                const alpha = Math.max(0, Math.min(255, Math.round((255 - brightness) * 5)));
-                data[p + 3] = Math.min(data[p + 3], alpha);
+            if (
+                clientsCount &&
+                experienceCount
+            ) {
+
+                animateCounter(
+                    clientsCount,
+                    36,
+                    '+'
+                );
+
+
+                animateCounter(
+                    experienceCount,
+                    2,
+                    '+ Years'
+                );
+
             }
+
+
+            metricRevealItems.forEach(item => {
+
+                item.classList.add(
+                    'metric-visible'
+                );
+
+            });
+
         }
 
-        portraitContext.putImageData(image, 0, 0);
-    }
 
-    function handlePortraitError() {
-        const stage = document.querySelector('.portrait-stage');
-        if (!stage) return;
+        if (metricsSection) {
 
-        stage.innerHTML = `
-            <div class="absolute inset-0 flex items-center justify-center text-center p-6 text-primary-700 dark:text-primary-300 font-semibold text-sm">
-                Please place <strong class="mx-1">Fardit Ahamed.jpg</strong> beside this HTML file.
-            </div>
-        `;
-    }
+            if (
+                'IntersectionObserver'
+                in window
+            ) {
 
-    if (portraitSource) {
-        if (portraitSource.complete && portraitSource.naturalWidth) {
-            processPortrait();
+                const metricsObserver =
+                    new IntersectionObserver(
+
+                        (entries, observer) => {
+
+                            if (
+                                entries.some(
+                                    entry =>
+                                        entry.isIntersecting
+                                )
+                            ) {
+
+                                startMetricsAnimation();
+
+                                observer.unobserve(
+                                    metricsSection
+                                );
+
+                            }
+
+                        },
+
+                        {
+                            threshold: 0.2
+                        }
+
+                    );
+
+
+                metricsObserver.observe(
+                    metricsSection
+                );
+
+            } else {
+
+                startMetricsAnimation();
+
+            }
+
+        }
+
+
+
+        /* =========================================================
+           LIGHT / DARK MODE
+        ========================================================= */
+
+        const themeToggleBtn =
+            document.getElementById(
+                'themeToggle'
+            );
+
+
+        if (
+
+            localStorage.getItem(
+                'color-theme'
+            ) === 'dark'
+
+            ||
+
+            (
+
+                !(
+                    'color-theme'
+                    in localStorage
+                )
+
+                &&
+
+                window.matchMedia(
+                    '(prefers-color-scheme: dark)'
+                ).matches
+
+            )
+
+        ) {
+
+            document.documentElement
+                .classList.add('dark');
+
         } else {
-            portraitSource.addEventListener('load', processPortrait);
+
+            document.documentElement
+                .classList.remove('dark');
+
         }
-    }
-</script>
+
+
+        themeToggleBtn.addEventListener(
+            'click',
+            function () {
+
+                if (
+                    document.documentElement
+                        .classList
+                        .contains('dark')
+                ) {
+
+                    document.documentElement
+                        .classList
+                        .remove('dark');
+
+                    localStorage.setItem(
+                        'color-theme',
+                        'light'
+                    );
+
+                } else {
+
+                    document.documentElement
+                        .classList
+                        .add('dark');
+
+                    localStorage.setItem(
+                        'color-theme',
+                        'dark'
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================================================
+           ACCENT COLOR THEME
+           
+           Purple -> Red -> Blue -> Purple
+        ========================================================= */
+
+        const accentThemeToggle =
+            document.getElementById(
+                'accentThemeToggle'
+            );
+
+
+        const accentThemes = [
+            'purple',
+            'red',
+            'blue'
+        ];
+
+
+        let savedAccentTheme =
+            localStorage.getItem(
+                'accent-theme'
+            ) || 'purple';
+
+
+        if (
+            !accentThemes.includes(
+                savedAccentTheme
+            )
+        ) {
+
+            savedAccentTheme =
+                'purple';
+
+        }
+
+
+        function applyAccentTheme(
+            theme
+        ) {
+
+            if (theme === 'purple') {
+
+                document.documentElement
+                    .removeAttribute(
+                        'data-accent'
+                    );
+
+            } else {
+
+                document.documentElement
+                    .setAttribute(
+                        'data-accent',
+                        theme
+                    );
+
+            }
+
+
+            localStorage.setItem(
+                'accent-theme',
+                theme
+            );
+
+        }
+
+
+        applyAccentTheme(
+            savedAccentTheme
+        );
+
+
+        accentThemeToggle.addEventListener(
+            'click',
+            function () {
+
+                const currentIndex =
+                    accentThemes.indexOf(
+                        savedAccentTheme
+                    );
+
+
+                const nextIndex =
+                    (
+                        currentIndex + 1
+                    ) %
+                    accentThemes.length;
+
+
+                savedAccentTheme =
+                    accentThemes[
+                        nextIndex
+                    ];
+
+
+                applyAccentTheme(
+                    savedAccentTheme
+                );
+
+            }
+        );
+
+    </script>
+
 </body>
+
 </html>
