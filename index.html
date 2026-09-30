@@ -155,9 +155,9 @@ html.anim #timeline:not(.tl-on)::before { transform: scaleY(0); }
 html.anim #timeline > div:not(.n-in) > .absolute { opacity: 0; transform: scale(0); }
 html.anim #timeline > div:not(.c-in) > .theme-card { opacity: 0; transform: translateY(18px); }
 
-/* Skill icons: pop + expanding ring */
-#skills .theme-icon-box { position: relative; }
-#skills .theme-icon-box::after { content: ""; position: absolute; inset: 0; border: 2px solid rgb(var(--accent)); border-radius: inherit; opacity: 0; pointer-events: none; }
+/* Skill + project icons: pop + expanding ring */
+#skills .theme-icon-box, #projects .theme-icon-box { position: relative; }
+#skills .theme-icon-box::after, #projects .theme-icon-box::after { content: ""; position: absolute; inset: 0; border: 2px solid rgb(var(--accent)); border-radius: inherit; opacity: 0; pointer-events: none; }
 .icon-pre { opacity: 0; transform: scale(.6); }
 .icon-pop { animation: iconpop .55s cubic-bezier(.34, 1.56, .64, 1) backwards; }
 .icon-pop::after { animation: iconring .9s ease-out .2s both; }
@@ -455,10 +455,30 @@ nav a.active { color: rgb(var(--accent-text)); }
 <!-- PROJECTS -->
 <section id="projects" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
   <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
-    <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Selected Projects</h2>
+    <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Projects &amp; Solutions</h2>
     <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <div class="theme-card p-6 rounded-2xl border shadow-md space-y-4">
+      <div class="theme-icon-box w-12 h-12 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-list-check"></i></div>
+      <div class="flex items-start justify-between gap-3">
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Daily Issue Tracker</h3>
+        <span class="theme-status inline-flex items-center px-2 py-1 rounded-full border text-[10px] font-semibold whitespace-nowrap">Private</span>
+      </div>
+      <p class="text-sm text-slate-600 dark:text-slate-400"><strong>What I built:</strong> An internal issue-tracking and reporting workflow for monitoring issue status, FID, issue type, brief, assignee, and status details across banking operations.</p>
+      <div class="flex flex-wrap gap-2 pt-1"><span class="tool-pill">Google Sheets</span><span class="tool-pill">Apps Script</span></div>
+    </div>
+
+    <div class="theme-card p-6 rounded-2xl border shadow-md space-y-4">
+      <div class="theme-icon-box w-12 h-12 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div class="flex items-start justify-between gap-3">
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white">IELTS Learning Platform</h3>
+        <span class="theme-status inline-flex items-center px-2 py-1 rounded-full border text-[10px] font-semibold whitespace-nowrap">Private</span>
+      </div>
+      <p class="text-sm text-slate-600 dark:text-slate-400"><strong>What I built:</strong> A web-based IELTS learning platform with a four-month study journey, progress tracking, study-day planning, streak tracking, band-related features, and Listening, Reading, Writing, and Speaking sections.</p>
+      <div class="flex flex-wrap gap-2 pt-1"><span class="tool-pill">Web Development</span><span class="tool-pill">IELTS</span></div>
+    </div>
 
     <div class="theme-card p-6 rounded-2xl border shadow-md space-y-4">
       <div class="theme-icon-box w-12 h-12 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-gears"></i></div>
@@ -479,6 +499,54 @@ nav a.active { color: rgb(var(--accent-text)); }
       <h3 class="text-lg font-bold text-slate-900 dark:text-white">UAT, Validation &amp; Audit Support</h3>
       <p class="text-sm text-slate-600 dark:text-slate-400"><strong>Solution:</strong> Supported UAT, testing, data validation, documentation and reporting, and contributed to two internal audit exercises.</p>
       <div class="flex flex-wrap gap-2 pt-1"><span class="tool-pill">UAT</span><span class="tool-pill">Audit Support</span></div>
+    </div>
+
+    <div class="theme-card p-6 rounded-2xl border shadow-md space-y-4">
+      <div class="theme-icon-box w-12 h-12 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-globe"></i></div>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white">Fardit Portfolio</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400"><strong>What I built:</strong> A personal developer portfolio presenting professional experience, skills, projects, education, certifications, and contact information.</p>
+      <div class="flex flex-wrap gap-2 pt-1"><span class="tool-pill">HTML</span><span class="tool-pill">CSS</span><span class="tool-pill">JavaScript</span></div>
+      <a href="https://github.com/Fardit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 w-fit px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all"><i class="fa-brands fa-github"></i> GitHub Profile</a>
+    </div>
+
+    <div class="theme-card p-6 rounded-2xl border shadow-md space-y-4">
+      <div class="theme-icon-box w-12 h-12 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-pills"></i></div>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white">Pharmacy Management System — C#</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400"><strong>What I built:</strong> A pharmacy management application with separate Access, Entities, Forms, Images, Properties, and application configuration components.</p>
+      <div class="flex flex-wrap gap-2 pt-1"><span class="tool-pill">C#</span><span class="tool-pill">Windows Application</span></div>
+      <a href="https://github.com/Fardit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 w-fit px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all"><i class="fa-brands fa-github"></i> GitHub Profile</a>
+    </div>
+
+    <div class="theme-card p-6 rounded-2xl border shadow-md space-y-4">
+      <div class="theme-icon-box w-12 h-12 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-prescription-bottle-medical"></i></div>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white">Pharmacy Management System — Java</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400"><strong>What I built:</strong> A Java pharmacy management application with database connectivity, entity and frame components, screenshots, and SQL database support.</p>
+      <div class="flex flex-wrap gap-2 pt-1"><span class="tool-pill">Java</span><span class="tool-pill">SQL</span></div>
+      <a href="https://github.com/Fardit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 w-fit px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all"><i class="fa-brands fa-github"></i> GitHub Profile</a>
+    </div>
+
+    <div class="theme-card p-6 rounded-2xl border shadow-md space-y-4">
+      <div class="theme-icon-box w-12 h-12 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-building"></i></div>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white">Property Management System</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400"><strong>What I built:</strong> A web-based property management system with login, registration, user, property, interface, CSS, and database-related components.</p>
+      <div class="flex flex-wrap gap-2 pt-1"><span class="tool-pill">PHP</span><span class="tool-pill">Web Technology</span></div>
+      <a href="https://github.com/Fardit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 w-fit px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all"><i class="fa-brands fa-github"></i> GitHub Profile</a>
+    </div>
+
+    <div class="theme-card p-6 rounded-2xl border shadow-md space-y-4">
+      <div class="theme-icon-box w-12 h-12 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-code"></i></div>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white">Developer Portfolio</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400"><strong>What I built:</strong> A developer portfolio website with structured portfolio content and supporting image assets.</p>
+      <div class="flex flex-wrap gap-2 pt-1"><span class="tool-pill">HTML</span><span class="tool-pill">CSS</span></div>
+      <a href="https://github.com/Fardit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 w-fit px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all"><i class="fa-brands fa-github"></i> GitHub Profile</a>
+    </div>
+
+    <div class="theme-card p-6 rounded-2xl border shadow-md space-y-4">
+      <div class="theme-icon-box w-12 h-12 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-cube"></i></div>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white">Computer Graphics Project</h3>
+      <p class="text-sm text-slate-600 dark:text-slate-400"><strong>What I built:</strong> A computer graphics project with interactive functionality and integrated morning, night, and rain sound assets.</p>
+      <div class="flex flex-wrap gap-2 pt-1"><span class="tool-pill">C++</span><span class="tool-pill">Computer Graphics</span></div>
+      <a href="https://github.com/Fardit" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 w-fit px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg shadow-sm transition-all"><i class="fa-brands fa-github"></i> GitHub Profile</a>
     </div>
 
   </div>
@@ -765,7 +833,7 @@ document.getElementById('accentThemeToggle').addEventListener('click', () => {
   const popIO = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) { popIO.unobserve(e.target); e.target._pop(); e.target._played = true; }
   }), { threshold: .6 });
-  $$('#skills .theme-icon-box').forEach(b => {
+  $$('#skills .theme-icon-box, #projects .theme-icon-box').forEach(b => {
     b.classList.add('icon-pre');
     b._pop = () => { b.classList.remove('icon-pre', 'icon-pop'); void b.offsetWidth; b.classList.add('icon-pop'); };
     b.closest('.theme-card').addEventListener('mouseenter', () => { if (b._played) b._pop(); });
