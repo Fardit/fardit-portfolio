@@ -23,6 +23,11 @@
     if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
     var a = localStorage.getItem('accent-theme');
     if (a === 'orange') document.documentElement.setAttribute('data-accent', 'orange');
+    /* Animations are opt-in: skipped entirely for reduced-motion; any script error reveals everything */
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('anim');
+      addEventListener('error', function () { document.documentElement.classList.remove('anim'); });
+    }
   } catch (e) {}
 })();
 </script>
@@ -75,8 +80,9 @@ html { scroll-padding-top: 5rem; }
 .metric-card:hover { border-color: rgb(var(--accent)); transform: translateY(-3px); box-shadow: 0 10px 25px rgb(var(--accent) / .18); }
 .contact-theme { background: linear-gradient(135deg, rgb(var(--accent)), rgb(var(--accent-dark))); }
 
-.place-link { text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; transition: text-decoration-color .2s; }
-.place-link:hover, .place-link:focus-visible { text-decoration-color: currentColor; }
+/* Underline draw: left → right on hover/focus, retracts on leave */
+.place-link { text-decoration: none; padding-bottom: 2px; background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1.5px; transition: background-size .35s ease; }
+.place-link:hover, .place-link:focus-visible, .place-link.ul-demo { background-size: 100% 1.5px; }
 
 .hero-photo-area { position: relative; width: 330px; height: 360px; display: flex; align-items: flex-end; justify-content: center; }
 .hero-photo-area::before { content: ""; position: absolute; width: 250px; height: 250px; right: 5px; bottom: 35px; background: rgb(var(--accent)); opacity: .08; border-radius: 32px; transform: rotate(12deg); }
@@ -87,7 +93,73 @@ html { scroll-padding-top: 5rem; }
   .hero-photo-area::before { width: 210px; height: 210px; }
   .hero-photo-area::after { width: 130px; height: 130px; }
 }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation: none !important; } }
+
+/* ================= ANIMATION LAYER (decorative only) ================= */
+/* Typewriter: untyped text keeps its layout (transparent) so wrapping never jumps */
+html.anim .tw-r { color: transparent; }
+
+/* Hero name scramble */
+#heroName.scr { white-space: nowrap; }
+
+/* Hero role crossfade */
+.role-cycle { display: grid; }
+.role-cycle > span { grid-area: 1 / 1; opacity: 0; transform: translateY(6px); transition: opacity .6s ease, transform .6s ease; }
+.role-cycle > span.on { opacity: 1; transform: none; }
+.role-cycle > span.off { opacity: 0; transform: translateY(-6px); }
+
+/* Section heading: accent line draws, then heading reveals */
+.hd .w-16 { transform-origin: left center; transition: transform .8s cubic-bezier(.65, 0, .35, 1); }
+.hd h2 { transition: opacity .7s ease .55s, transform .7s ease .55s; }
+html.anim .hd:not(.on) .w-16 { transform: scaleX(0); }
+html.anim .hd:not(.on) h2 { opacity: 0; transform: translateY(14px); }
+
+/* Timeline: line draws, then node, then card */
+#timeline { border-left-color: transparent; }
+#timeline::before { content: ""; position: absolute; left: -2px; top: 0; bottom: 0; width: 2px; background: rgb(var(--accent) / .3); transform-origin: top; transition: transform 1s cubic-bezier(.65, 0, .35, 1); }
+html.anim #timeline:not(.tl-on)::before { transform: scaleY(0); }
+#timeline > div > .absolute { transition: opacity .35s ease, transform .45s cubic-bezier(.34, 1.56, .64, 1); }
+#timeline > div > .theme-card { transition: box-shadow .3s, border-color .3s, opacity .6s ease, transform .6s ease; }
+html.anim #timeline > div:not(.n-in) > .absolute { opacity: 0; transform: scale(0); }
+html.anim #timeline > div:not(.c-in) > .theme-card { opacity: 0; transform: translateY(18px); }
+
+/* Skill icons: pop + expanding ring */
+#skills .theme-icon-box { position: relative; }
+#skills .theme-icon-box::after { content: ""; position: absolute; inset: 0; border: 2px solid rgb(var(--accent)); border-radius: inherit; opacity: 0; pointer-events: none; }
+.icon-pre { opacity: 0; transform: scale(.6); }
+.icon-pop { animation: iconpop .55s cubic-bezier(.34, 1.56, .64, 1) backwards; }
+.icon-pop::after { animation: iconring .9s ease-out .2s both; }
+@keyframes iconpop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: scale(1); } }
+@keyframes iconring { from { opacity: .7; transform: scale(1); } to { opacity: 0; transform: scale(1.9); } }
+
+/* Availability dot: only the dot pulses */
+.status-dot { position: relative; animation: dotpulse 2s ease-in-out infinite; }
+.status-dot::after { content: ""; position: absolute; inset: 0; border-radius: 9999px; background: rgb(16 185 129); animation: dotripple 2s ease-out infinite; }
+@keyframes dotpulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: .8; } }
+@keyframes dotripple { 0% { transform: scale(1); opacity: .5; } 100% { transform: scale(3); opacity: 0; } }
+
+/* CMS / Product: subtle system-processing signal (no text, edges only) */
+.sys-proc { position: relative; }
+.sys-proc::before { content: ""; position: absolute; left: 14px; right: 14px; bottom: 0; height: 2px; border-radius: 2px; pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgb(var(--accent) / .75), transparent) no-repeat -40% 0 / 40% 100%; animation: sysbar 3.2s linear infinite; }
+.sys-proc::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 6px; height: 4px; pointer-events: none; opacity: .5;
+  background: radial-gradient(circle, rgb(var(--accent) / .6) 1.5px, transparent 2px) 0 0 / 22px 4px repeat-x; animation: syspackets 2.4s linear infinite; }
+@keyframes sysbar { to { background-position: 140% 0; } }
+@keyframes syspackets { to { background-position: 22px 0; } }
+
+/* Contact buttons: magnetic */
+#contact a { transition-duration: .25s; }
+
+/* About paragraph: line-by-line + typewriter */
+.aw { display: inline-block; white-space: nowrap; transform: translateY(6px); transition: transform .45s ease; }
+.aw.in { transform: none; }
+.ac { opacity: 0; }
+.ac.in { opacity: 1; transition: opacity .08s linear; }
+
+/* Replay control */
+#replayBtn { position: fixed; right: 1rem; bottom: 1rem; z-index: 40; }
+@media print { #replayBtn { display: none; } }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation: none !important; } #replayBtn { display: none; } }
 </style>
 </head>
 
@@ -135,10 +207,10 @@ html { scroll-padding-top: 5rem; }
   <div class="flex flex-col md:flex-row items-center justify-between gap-12">
     <div class="flex-1 text-center md:text-left space-y-6">
       <div class="theme-status inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-semibold uppercase tracking-wider">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Open to new opportunities
+        <span class="w-2 h-2 rounded-full bg-emerald-500 status-dot"></span> Open to new opportunities
       </div>
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">Fardit Ahamed</h1>
-      <p class="text-xl sm:text-2xl font-semibold text-primary-600 dark:text-primary-400">Application Engineer | Solution Analyst | Product &amp; Operations</p>
+      <h1 id="heroName" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">Fardit Ahamed</h1>
+      <p id="heroRole" class="text-xl sm:text-2xl font-semibold text-primary-600 dark:text-primary-400">Application Engineer | Solution Analyst | Product &amp; Operations</p>
       <p class="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed">Tech &amp; business professional specializing in Card Management Systems (CMS), application support, process automation, and solution analysis for top-tier banking clients.</p>
 
       <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-sm text-slate-600 dark:text-slate-400">
@@ -200,7 +272,7 @@ html { scroll-padding-top: 5rem; }
       <div class="w-16 h-1 bg-primary-600 mx-auto rounded-full"></div>
     </div>
 
-    <div class="relative border-l-2 border-primary-500/30 ml-4 md:ml-32 space-y-12">
+    <div id="timeline" class="relative border-l-2 border-primary-500/30 ml-4 md:ml-32 space-y-12">
 
       <!-- IT Consultants PLC -->
       <div class="relative pl-6 md:pl-10">
@@ -378,6 +450,8 @@ html { scroll-padding-top: 5rem; }
   <p>© <span id="year">2026</span> Fardit Ahamed. All rights reserved.</p>
 </footer>
 
+<button id="replayBtn" type="button" class="w-10 h-10 rounded-full bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 shadow-md transition-colors" title="Replay name scramble, heading lines and underline draw" aria-label="Replay name scramble, heading lines and underline draw"><i class="fa-solid fa-rotate-right"></i></button>
+
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -420,6 +494,192 @@ document.getElementById('accentThemeToggle').addEventListener('click', () => {
   safeSet('accent-theme', orange ? 'orange' : 'blue');
   document.querySelector('meta[name="theme-color"]').content = orange ? '#C2410C' : '#2563EB';
 });
+</script>
+
+<!-- ANIMATION LAYER: decorative only. Every transformed text resolves to its exact original text. -->
+<script>
+(function () {
+  const root = document.documentElement;
+  if (!root.classList.contains('anim') || !('IntersectionObserver' in window)) { root.classList.remove('anim'); return; }
+  const $ = (s, c = document) => c.querySelector(s), $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+  /* ---------- 1. HERO NAME: true scramble ---------- */
+  const h1 = $('#heroName'), nameOrig = h1.textContent, POOL = 'abcdeghnopqu0123456789#$%&*+=?<>/';
+  let scrRun = false;
+  h1.setAttribute('aria-label', nameOrig); h1.tabIndex = 0;
+  function scramble() {
+    if (scrRun) return; scrRun = true; h1.classList.add('scr');
+    const t0 = performance.now(), n = nameOrig.length; let last = 0;
+    (function f(now) {
+      const e = now - t0; if (now - last < 45 && e < 1000) return requestAnimationFrame(f); last = now;
+      let out = '', done = true;
+      for (let i = 0; i < n; i++) {
+        const c = nameOrig[i];
+        if (c === ' ') { out += c; continue; }
+        if (e >= 280 + (i / (n - 1)) * 720) out += c; else { out += POOL[Math.floor(Math.random() * POOL.length)]; done = false; }
+      }
+      h1.textContent = done ? nameOrig : out;
+      if (done) { scrRun = false; h1.classList.remove('scr'); } else requestAnimationFrame(f);
+    })(t0);
+  }
+  h1.addEventListener('mouseenter', scramble);
+  h1.addEventListener('focus', scramble);
+  h1.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scramble(); } });
+  scramble();
+
+  /* ---------- 2. HERO ROLE: crossfade cycling (source text kept for assistive tech) ---------- */
+  const rp = $('#heroRole'), roleOrig = rp.textContent;
+  rp.textContent = '';
+  const sr = document.createElement('span'); sr.className = 'sr-only'; sr.textContent = roleOrig;
+  const cy = document.createElement('span'); cy.className = 'role-cycle'; cy.setAttribute('aria-hidden', 'true');
+  const ph = ['Application Engineer', 'Solution Analyst', 'Product Operations'].map((t, i) => {
+    const s = document.createElement('span'); s.textContent = t; if (!i) s.className = 'on'; cy.appendChild(s); return s;
+  });
+  rp.append(sr, cy);
+  let ri = 0;
+  setInterval(() => {
+    const c = ph[ri]; ri = (ri + 1) % ph.length;
+    c.className = 'off'; ph[ri].className = 'on';
+    setTimeout(() => { c.className = ''; }, 700);
+  }, 2600);
+
+  /* ---------- 8. BODY TEXT: DOM-safe typewriter (layout reserved, natural wrapping) ---------- */
+  const jobs = []; let ticking = false;
+  function prep(el) {
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), nodes = [];
+    while (w.nextNode()) if (w.currentNode.nodeValue.trim()) nodes.push(w.currentNode);
+    const segs = nodes.map(n => {
+      const orig = n.nodeValue, v = document.createElement('span'), r = document.createElement('span');
+      v.className = 'tw-v'; r.className = 'tw-r'; r.textContent = orig; n.replaceWith(v, r);
+      return { v, r, orig };
+    });
+    el._tw = { segs, total: segs.reduce((a, s) => a + s.orig.length, 0), shown: 0 };
+  }
+  function start(el, delay) {
+    const t = el._tw; if (!t || t.started) return; t.started = true;
+    setTimeout(() => {
+      t.t0 = performance.now(); t.dur = clamp(t.total * 11, 300, 2200); jobs.push(t);
+      if (!ticking) { ticking = true; requestAnimationFrame(step); }
+    }, delay || 0);
+  }
+  function step(now) {
+    for (let i = jobs.length - 1; i >= 0; i--) {
+      const t = jobs[i], p = Math.min(1, (now - t.t0) / t.dur), n = Math.max(0, Math.floor(p * t.total));
+      if (n !== t.shown) {
+        let left = n;
+        for (const s of t.segs) { const k = clamp(left, 0, s.orig.length); left -= k; s.v.textContent = s.orig.slice(0, k); s.r.textContent = s.orig.slice(k); }
+        t.shown = n;
+      }
+      if (p >= 1) { for (const s of t.segs) { s.v.replaceWith(document.createTextNode(s.orig)); s.r.remove(); } jobs.splice(i, 1); }
+    }
+    if (jobs.length) requestAnimationFrame(step); else ticking = false;
+  }
+  const twIO = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { twIO.unobserve(e.target); start(e.target, e.target._d); }
+  }), { threshold: .15 });
+  const typed = new Set();
+  ['.theme-status', '#heroName ~ p:not(#heroRole)', '#heroName ~ div:not(.theme-status) > a:not(.inline-flex), #heroName ~ div:not(.theme-status) > span',
+   '#metrics p.text-sm', '#experience .theme-card p', '#experience .theme-soft', '#experience li',
+   '#skills .theme-card p', '#education .theme-card span', '#education .theme-card p',
+   '#contact h2', '#contact p', 'footer p'].forEach(sel => $$(sel).forEach(el => {
+    if (typed.has(el) || el.matches('#heroRole')) return;
+    typed.add(el); prep(el);
+    if (!el.closest('#timeline')) twIO.observe(el);
+  }));
+  /* hero stagger */
+  const heroDesc = $$('#heroName ~ p:not(#heroRole)')[0]; if (heroDesc) heroDesc._d = 350;
+  $$('#heroName ~ div:not(.theme-status) > a:not(.inline-flex), #heroName ~ div:not(.theme-status) > span').forEach((el, i) => { el._d = 900 + i * 200; });
+
+  /* ---------- 12. ABOUT: line-by-line + typewriter (browser wraps naturally) ---------- */
+  const ap = $('#about .theme-card p'), aOrig = ap.textContent, aChars = [], aWords = [];
+  ap.textContent = '';
+  aOrig.split(/(\s+)/).forEach(tok => {
+    if (!tok) return;
+    if (/^\s+$/.test(tok)) { ap.appendChild(document.createTextNode(tok)); return; }
+    const w = document.createElement('span'); w.className = 'aw'; w._i = aChars.length;
+    [...tok].forEach(c => { const s = document.createElement('span'); s.className = 'ac'; s.textContent = c; w.appendChild(s); aChars.push(s); });
+    aWords.push(w); ap.appendChild(w);
+  });
+  function aboutPlay() {
+    let line = -1, lt = -99; const st = new Array(aChars.length);
+    aWords.forEach(w => {
+      if (w.offsetTop > lt + 6) { line++; lt = w.offsetTop; }
+      for (let i = w._i, c = 0; c < w.children.length; c++, i++) st[i] = i * 7 + line * 90;
+    });
+    const t0 = performance.now(); let ci = 0, wi = 0;
+    (function f(now) {
+      const e = now - t0;
+      while (ci < aChars.length && st[ci] <= e) { aChars[ci].classList.add('in'); ci++; }
+      while (wi < aWords.length && aWords[wi]._i < ci) { aWords[wi].classList.add('in'); wi++; }
+      if (ci < aChars.length) requestAnimationFrame(f); else setTimeout(() => { ap.textContent = aOrig; }, 500);
+    })(t0);
+  }
+  const abIO = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { abIO.disconnect(); aboutPlay(); } }, { threshold: .3 });
+  abIO.observe(ap);
+
+  /* ---------- 3. SECTION HEADINGS: line draw + heading reveal ---------- */
+  const hds = $$('.w-16.h-1').map(l => l.parentElement);
+  hds.forEach(h => h.classList.add('hd'));
+  const hdIO = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('on'); hdIO.unobserve(e.target); }
+  }), { threshold: .6 });
+  hds.forEach(h => hdIO.observe(h));
+
+  /* ---------- 5. WORK EXPERIENCE: timeline line → node → card ---------- */
+  const tl = $('#timeline'), entries = $$('#timeline > div');
+  const visible = (el, margin) => new Promise(res => {
+    const o = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { o.disconnect(); res(); } }, { rootMargin: margin || '0px 0px -15% 0px' });
+    o.observe(el);
+  });
+  (async () => {
+    await visible(tl); tl.classList.add('tl-on'); await sleep(900);
+    for (const en of entries) {
+      await visible(en); en.classList.add('n-in'); await sleep(350); en.classList.add('c-in');
+      const card = $('.theme-card', en); let li = 0;
+      [...typed].filter(el => card.contains(el)).forEach(el => start(el, el.tagName === 'LI' ? 400 + (li++) * 140 : 250));
+      await sleep(650);
+    }
+  })();
+
+  /* ---------- 7. SKILL ICONS: pop + ring ---------- */
+  const popIO = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { popIO.unobserve(e.target); e.target._pop(); e.target._played = true; }
+  }), { threshold: .6 });
+  $$('#skills .theme-icon-box').forEach(b => {
+    b.classList.add('icon-pre');
+    b._pop = () => { b.classList.remove('icon-pre', 'icon-pop'); void b.offsetWidth; b.classList.add('icon-pop'); };
+    b.closest('.theme-card').addEventListener('mouseenter', () => { if (b._played) b._pop(); });
+    popIO.observe(b);
+  });
+
+  /* ---------- 11. CMS / PRODUCT: system processing ---------- */
+  const firstCard = $('#timeline > div .theme-card'), prodCard = $('#skills .grid > div:last-child');
+  [firstCard, prodCard].forEach(c => c && c.classList.add('sys-proc'));
+
+  /* ---------- 9. CTA: magnetic buttons (fine pointers only) ---------- */
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const btns = $$('#contact a');
+    addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse') return;
+      btns.forEach(b => {
+        const r = b.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+        const near = Math.hypot(dx, dy) < Math.max(r.width, r.height) / 2 + 60;
+        b.style.transform = near ? 'translate(' + clamp(dx * .18, -10, 10) + 'px,' + clamp(dy * .18, -10, 10) + 'px)' : '';
+      });
+    });
+    document.addEventListener('mouseleave', () => btns.forEach(b => { b.style.transform = ''; }));
+  }
+
+  /* ---------- Replay: name scramble, heading lines, underline draw ---------- */
+  $('#replayBtn').addEventListener('click', () => {
+    scramble();
+    hds.forEach(h => { h.classList.remove('on'); hdIO.unobserve(h); hdIO.observe(h); });
+    const links = $$('.place-link'); links.forEach(a => a.classList.add('ul-demo'));
+    setTimeout(() => links.forEach(a => a.classList.remove('ul-demo')), 1200);
+  });
+})();
 </script>
 </body>
 </html>
