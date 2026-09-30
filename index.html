@@ -22,7 +22,7 @@
     var t = localStorage.getItem('color-theme');
     if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
     var a = localStorage.getItem('accent-theme');
-    if (a === 'orange') document.documentElement.setAttribute('data-accent', 'orange');
+    if (['red','orange','yellow','green','indigo','violet'].indexOf(a) > -1) document.documentElement.setAttribute('data-accent', a);
     /* Animations are opt-in: skipped entirely for reduced-motion; any script error reveals everything */
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.documentElement.classList.add('anim');
@@ -59,12 +59,20 @@ tailwind.config = {
   --card: 255 255 255; --border: 219 234 254; --muted: 241 245 249;
 }
 .dark { --accent-text: 96 165 250; --card: 30 41 59; --border: 51 65 85; --muted: 39 52 73; }
-/* Orange uses a darker shade so white text passes WCAG AA */
-html[data-accent="orange"] {
-  --accent: 194 65 12; --accent-hover: 154 52 18; --accent-dark: 124 45 18;
-  --accent-light: 255 247 237; --accent-soft: 255 237 213; --accent-text: 194 65 12; --border: 254 215 170;
-}
-html[data-accent="orange"].dark { --accent-text: 251 146 60; --card: 41 33 29; --border: 75 52 38; --muted: 52 39 31; }
+/* Seven accent themes (blue = default :root). Yellow/orange use darker text shades for legibility on light backgrounds */
+html[data-accent="red"] { --accent: 220 38 38; --accent-hover: 185 28 28; --accent-dark: 153 27 27; --accent-light: 254 242 242; --accent-soft: 254 226 226; --accent-text: 185 28 28; --border: 254 202 202; }
+html[data-accent="orange"] { --accent: 234 88 12; --accent-hover: 194 65 12; --accent-dark: 154 52 18; --accent-light: 255 247 237; --accent-soft: 255 237 213; --accent-text: 194 65 12; --border: 254 215 170; }
+html[data-accent="yellow"] { --accent: 202 138 4; --accent-hover: 161 98 7; --accent-dark: 133 77 14; --accent-light: 254 252 232; --accent-soft: 254 249 195; --accent-text: 133 77 14; --border: 253 230 138; }
+html[data-accent="green"] { --accent: 22 163 74; --accent-hover: 21 128 61; --accent-dark: 22 101 52; --accent-light: 240 253 244; --accent-soft: 220 252 231; --accent-text: 21 128 61; --border: 187 247 208; }
+html[data-accent="indigo"] { --accent: 79 70 229; --accent-hover: 67 56 202; --accent-dark: 55 48 163; --accent-light: 238 242 255; --accent-soft: 224 231 255; --accent-text: 79 70 229; --border: 199 210 254; }
+html[data-accent="violet"] { --accent: 124 58 237; --accent-hover: 109 40 217; --accent-dark: 91 33 182; --accent-light: 245 243 255; --accent-soft: 237 233 254; --accent-text: 109 40 217; --border: 221 214 254; }
+html[data-accent].dark { --border: 51 65 85; }
+html[data-accent="red"].dark { --accent-text: 248 113 113; }
+html[data-accent="orange"].dark { --accent-text: 251 146 60; }
+html[data-accent="yellow"].dark { --accent-text: 250 204 21; }
+html[data-accent="green"].dark { --accent-text: 74 222 128; }
+html[data-accent="indigo"].dark { --accent-text: 129 140 248; }
+html[data-accent="violet"].dark { --accent-text: 167 139 250; }
 
 html { scroll-padding-top: 5rem; }
 :focus-visible { outline: 2px solid rgb(var(--accent-text)); outline-offset: 3px; border-radius: 6px; }
@@ -85,13 +93,38 @@ html { scroll-padding-top: 5rem; }
 .place-link:hover, .place-link:focus-visible, .place-link.ul-demo { background-size: 100% 1.5px; }
 
 .hero-photo-area { position: relative; width: 330px; height: 360px; display: flex; align-items: flex-end; justify-content: center; }
-.hero-photo-area::before { content: ""; position: absolute; width: 250px; height: 250px; right: 5px; bottom: 35px; background: rgb(var(--accent)); opacity: .08; border-radius: 32px; transform: rotate(12deg); }
-.hero-photo-area::after { content: ""; position: absolute; width: 160px; height: 160px; left: 5px; top: 55px; border: 3px solid rgb(var(--accent)); opacity: .12; transform: rotate(-18deg); }
-.hero-photo { position: relative; z-index: 5; width: 100%; height: 100%; object-fit: contain; }
+.hero-photo-area::before { content: ""; position: absolute; width: 250px; height: 250px; right: 5px; bottom: 35px; background: rgb(var(--accent)); opacity: .08; border-radius: 32px; transform: translate(calc(var(--px) * -5px), calc(var(--py) * -5px)) rotate(12deg); transition: transform .5s ease-out; }
+.hero-photo-area::after { content: ""; position: absolute; width: 160px; height: 160px; left: 5px; top: 55px; border: 3px solid rgb(var(--accent)); opacity: .12; transform: translate(calc(var(--px) * -9px), calc(var(--py) * -9px)) rotate(-18deg); transition: transform .5s ease-out; }
+.hero-photo-area { --px: 0; --py: 0; --ps: 1; }
+.hero-photo-area.is-hover { --ps: 1.025; }
+.hero-photo { position: relative; z-index: 5; width: 100%; height: 100%; object-fit: contain;
+  transform: translate(calc(var(--px) * 8px), calc(var(--py) * 8px)) scale(var(--ps)); transition: transform .4s ease-out;
+  animation: heroReveal 1.4s cubic-bezier(.22, 1, .36, 1) backwards, heroFloat 6s ease-in-out 1.6s infinite; }
+/* Orbital ring (behind the portrait, follows the active accent) */
+.hero-orbit { position: absolute; inset: 0; margin: auto; width: 300px; height: 300px; border-radius: 50%; z-index: 1; pointer-events: none;
+  border: 1px solid rgb(var(--accent) / .3); translate: calc(var(--px) * 3px) calc(var(--py) * 3px); transition: translate .5s ease-out;
+  animation: heroSpin 16s linear infinite, heroFade 1s ease 1.2s backwards; }
+.hero-orbit::before, .hero-orbit::after { content: ""; position: absolute; border-radius: 50%; background: rgb(var(--accent)); left: 50%; }
+.hero-orbit::before { width: 6px; height: 6px; top: -3px; margin-left: -3px; opacity: .8; box-shadow: 0 0 6px rgb(var(--accent) / .5); }
+.hero-orbit::after { width: 4px; height: 4px; bottom: -2px; margin-left: -2px; opacity: .5; }
+/* Occasional scanner sweep, masked to the portrait silhouette */
+.hero-scan { position: absolute; inset: 0; z-index: 6; pointer-events: none; overflow: hidden;
+  -webkit-mask: url("Fardit%20Ahamed.png") center / contain no-repeat; mask: url("Fardit%20Ahamed.png") center / contain no-repeat;
+  transform: translate(calc(var(--px) * 8px), calc(var(--py) * 8px)) scale(var(--ps)); transition: transform .4s ease-out;
+  animation: heroFloat 6s ease-in-out 1.6s infinite; }
+.hero-scan::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; opacity: 0;
+  background: linear-gradient(90deg, transparent, rgb(var(--accent) / .9), transparent); box-shadow: 0 0 12px 2px rgb(var(--accent) / .3);
+  animation: heroSweep 9s ease-in-out 3.2s infinite; }
+@keyframes heroReveal { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes heroFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+@keyframes heroSpin { to { transform: rotate(360deg); } }
+@keyframes heroFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes heroSweep { 0%, 78% { top: 0; opacity: 0; } 82% { opacity: .7; } 94% { top: calc(100% - 2px); opacity: .7; } 97%, 100% { top: calc(100% - 2px); opacity: 0; } }
 @media (max-width: 767px) {
   .hero-photo-area { width: 280px; height: 320px; }
   .hero-photo-area::before { width: 210px; height: 210px; }
   .hero-photo-area::after { width: 130px; height: 130px; }
+  .hero-orbit { width: 250px; height: 250px; }
 }
 
 /* ================= ANIMATION LAYER (decorative only) ================= */
@@ -227,7 +260,9 @@ html.anim #timeline > div:not(.c-in) > .theme-card { opacity: 0; transform: tran
 
     <!-- Rename your file to fardit-ahamed.png (no spaces) -->
     <div class="hero-photo-area">
+      <div class="hero-orbit" aria-hidden="true"></div>
       <img src="Fardit Ahamed.png" alt="Portrait of Fardit Ahamed" class="hero-photo" width="330" height="360" fetchpriority="high">
+      <div class="hero-scan" aria-hidden="true"></div>
     </div>
   </div>
 </section>
@@ -489,10 +524,12 @@ document.getElementById('themeToggle').addEventListener('click', () => {
   safeSet('color-theme', dark ? 'dark' : 'light');
 });
 document.getElementById('accentThemeToggle').addEventListener('click', () => {
-  const root = document.documentElement, orange = root.getAttribute('data-accent') !== 'orange';
-  orange ? root.setAttribute('data-accent', 'orange') : root.removeAttribute('data-accent');
-  safeSet('accent-theme', orange ? 'orange' : 'blue');
-  document.querySelector('meta[name="theme-color"]').content = orange ? '#C2410C' : '#2563EB';
+  const root = document.documentElement, order = ['red','orange','yellow','green','blue','indigo','violet'],
+    hex = { red:'#DC2626', orange:'#EA580C', yellow:'#CA8A04', green:'#16A34A', blue:'#2563EB', indigo:'#4F46E5', violet:'#7C3AED' },
+    next = order[(order.indexOf(root.getAttribute('data-accent') || 'blue') + 1) % order.length];
+  next === 'blue' ? root.removeAttribute('data-accent') : root.setAttribute('data-accent', next);
+  safeSet('accent-theme', next);
+  document.querySelector('meta[name="theme-color"]').content = hex[next];
 });
 </script>
 
@@ -670,6 +707,20 @@ document.getElementById('accentThemeToggle').addEventListener('click', () => {
       });
     });
     document.addEventListener('mouseleave', () => btns.forEach(b => { b.style.transform = ''; }));
+  }
+
+  /* ---------- Hero photo: pointer parallax (fine pointers only) ---------- */
+  const pa = $('.hero-photo-area');
+  if (pa && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let raf = 0, nx = 0, ny = 0;
+    const apply = () => { raf = 0; pa.style.setProperty('--px', nx.toFixed(3)); pa.style.setProperty('--py', ny.toFixed(3)); };
+    pa.addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse') return;
+      const r = pa.getBoundingClientRect();
+      nx = clamp((e.clientX - r.left) / r.width * 2 - 1, -1, 1); ny = clamp((e.clientY - r.top) / r.height * 2 - 1, -1, 1);
+      pa.classList.add('is-hover'); if (!raf) raf = requestAnimationFrame(apply);
+    });
+    pa.addEventListener('pointerleave', () => { nx = ny = 0; pa.classList.remove('is-hover'); if (!raf) raf = requestAnimationFrame(apply); });
   }
 
   /* ---------- Replay: name scramble, heading lines, underline draw ---------- */
